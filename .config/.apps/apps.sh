@@ -35,7 +35,7 @@ echo "--- Installing Comprehensive App List ---"
 # Added some missing essentials like 'mesa' for basic rendering
 APPS=(
     "limine" "sddm" "hyprland" "xdg-desktop-portal-hyprland" "uwsm"
-    "kitty" "wofi" "waybar" "dunst" "libnotify"
+    "kitty" "wofi" "dunst" "libnotify"
     "micro" "thunar" "thunar-archive-plugin" "gvfs"
     "zoxide" "eza" "zsh" "btop" "fastfetch"
     "grim" "slurp" "cliphist" "wl-clipboard"
@@ -45,7 +45,7 @@ APPS=(
     "qt5-wayland" "qt6-wayland" "qt5ct"
     "zsh-autosuggestions"
     "zsh-syntax-highlighting"
-    "mesa" # Added for basic OpenGL support on all GPUs
+    "mesa" "ufw"# Added for basic OpenGL support on all GPUs
 )
 
 sudo pacman -S --needed "${APPS[@]}" --noconfirm
@@ -56,5 +56,23 @@ if [ "$SHELL" != "$(which zsh)" ]; then
     echo "Changing default shell to zsh..."
     sudo chsh -s $(which zsh) $USER
 fi
+
+# --- Firewall Configuration (UFW) ---
+echo "Configuring Firewall..."
+
+# Enable and start UFW service
+sudo systemctl enable --now ufw
+
+# Set default policies: Deny all incoming, Allow all outgoing
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow common essential ports (optional, e.g., SSH if you need it)
+# sudo ufw allow ssh
+
+# Activate the firewall
+sudo ufw --force enable
+
+echo "Firewall is now ACTIVE and will start on boot."
 
 echo "--- Apps Installer Done! ---"
