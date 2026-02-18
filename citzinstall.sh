@@ -33,7 +33,11 @@ find . -mindepth 2 -name "*.sh" | while read -r script; do
     fi
 done
 
+mkdir -p $HOME/.local/application
+mkdir -p $HOME/Document
 mkdir -p $HOME/Pictures/Screenshots
+
+source ~/.zshrc
 
 echo "--- 🧹 Final Cleanup ---"
 find . -maxdepth 1 -type d -name ".*" ! -name "." ! -name ".git" -exec rm -rf {} +

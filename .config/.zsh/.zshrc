@@ -8,8 +8,9 @@ export VISUAL='micro'
 export ZSH="$HOME/.oh-my-zsh"
 
 # --- 2. Oh My Zsh Setup (Urutan jangan ditukar!) ---
-ZSH_THEME="robbyrussell"
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git)
 
 # Load Oh My Zsh (Taruh paling bawah setelah theme & plugins)
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
@@ -50,7 +51,7 @@ alias cway='micro ~/.config/waybar/config.jsonc'
 alias cwaycss='micro ~/.config/waybar/style.css'
 alias czsh='micro ~/.zshrc'
 alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
-alias nuke='source ~/.zshrc && r-all && echo "Reload all config DONE!"'
+alias nuke='source ~/.zshrc && ~/.local/share/applications/bin/r-all.sh && echo "Reload all config DONE!"'
 alias dsync='cd ~/.desktop && ./sync.sh && cd -'
 alias gitpush='git add . && git commit -m "update" && git push'
 
@@ -64,6 +65,10 @@ alias la='ls -a'
 
 # --- 9. Custom Functions ---
 mkd() { mkdir -p "$@" && cd "$_"; }
+
+# Source plugins dari pacman
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # =========================================================
 #  END OF CONFIG

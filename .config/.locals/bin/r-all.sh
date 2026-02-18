@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # 1. Reload config Waypaper
-pkill swww-daemon && swww-daemon & 
+#pkill swww-daemon && swww-daemon & 
 
 # 2. Reload config Bar & Notif
-pkill waybar; waybar &
+#pkill waybar; waybar &
 pkill dunst; dunst &
 
 # 3. Reload config Hyprland
