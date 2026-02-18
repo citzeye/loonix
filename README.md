@@ -42,7 +42,6 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | Apps | Super + E | File Manager (Thunar) |
 | Apps | Super + Space | App Launcher (Wofi) |
 | Apps | Super + V | Clipboard History |
-| Apps | Alt + C | Edit Config (VS Code) |
 | Window | Alt + Q | Close Window (Kill) |
 | Window | Super + T | Toggle Floating |
 | Window | Super + F | Fullscreen |
@@ -61,7 +60,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 ## ⚡ Essential Aliases
 | Alias | File to Edit |
 | :--- | :--- |
-| ch | Hyprland Main Config |
+| chypr | Hyprland Main Config |
 | ckeybinds| Keybindings Config |
 | czsh | Zsh Runtime Config |
 | ckit | Kitty Terminal Config |
