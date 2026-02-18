@@ -11,7 +11,7 @@ Welcome to my configuration repository! This repo contains my personal Arch Linu
  - Bootloader: Limine
  - login page: sddm
 
-
+***
 
 ## 🚀 QUICK INSTALLATION
 If you're feeling brave (use at your own risk!), simply clone and copy the configs:
@@ -32,7 +32,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 > IMPORTANT : MASTER config playground in ```~/loonix/.config```
 > Always use aliase ```deploy``` after edit to send all your config into the right position.
 
-
+***
 
 ## ⌨️ Keybindings
 | Category | Keybind | Function |
@@ -48,14 +48,14 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | Window | Super + Arrow | Move Focus |
 | System | Super + M | Exit Hyprland |
 | System | Super + Home | Reload All Configs |
-| System | Ctrl + Shift + R | Sapu Jagat (Total Refresh) |
+| System | Ctrl + Shift + R | Total Re-Load |
 | Screen | Super + Print | Screenshot Region |
 | Screen | Print | Screenshot Fullscreen |
 | Workspc | Alt + [1-5] | Switch Workspace |
 | Workspc | Super + [1-5] | Move Window to Workspace |
 | Workspc | Alt + Tab | Next Workspace - Loop |
 
-
+***
 
 ## ⚡ Essential Aliases
 | Alias | File to Edit |
@@ -64,10 +64,8 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | ckeybinds| Keybindings Config |
 | czsh | Zsh Runtime Config |
 | ckit | Kitty Terminal Config |
-| cway | Waybar Layout/Config |
-| cwaycss | Waybar CSS Styling |
 
-
+***
 
 ## 🛠️ System & Workflow
 | Alias | Function |
@@ -81,7 +79,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | spi / spr| Install / Remove Package |
 | dsync | Sync script for .desktop files |
 
-
+***
 
 Built with ☕ and the **headache**, hahahahaha.
 
