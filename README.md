@@ -5,28 +5,33 @@ Welcome to my configuration repository! This repo contains my personal Arch Linu
 ## 🛠️ TECH STACK
  - WM: Hyprland (Wayland)
  - Terminal: Kitty
- - Shell: Zsh (with Powerlevel10k/Oh-My-Zsh)
+ - Shell: Zsh
  - File Manager: Thunar
  - Editor: Micro / VS Code
+ - Bootloader Limine
+ - login page sddm
 
 
 
 ## 🚀 QUICK INSTALLATION
 If you're feeling brave (use at your own risk!), simply clone and copy the configs:
 
-    git clone https://github.com/citzeye/arch.git
-    cd arch
-    chmod +x citzinstall.sh
-    ./citzinstall.sh
+    git clone https://github.com/citzeye/loonix.git
+    cd loonix
+    chmod +x loonix.sh
+    ./loonix.sh
 
 
 > ## Note :
-> *I asume you have been installed ARCH base with no GUI.* This is online install not offline. Thats mean you need INTERNET CONNECTION
-> You can use usb tethering from your phone if you dont have wired
-> internet/driver for your wifi dongle.*
-> 
+> *I asume you have been installed ARCH base with no GUI.* This is online install not offline. Thats mean you need INTERNET CONNECTION.
+> You can use usb tethering from your phone too.
+>
 > Test your connection with : ping google.com" (press 'ctrl+c' to stop
 > ping)
+>
+> REMEMBER : MASTER config playground in ~/loonix/.config.
+> ```deploy```
+> use alias deploy after edit your config
 
 
 
@@ -73,11 +78,12 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | rzsh | Reload Zsh Only |
 | gitpush| Auto Add, Commit ("update"), & Push |
 | c | Jump to ~/.config |
+| deploy | Send All Config into hyprland system |
 | update | Update System (pacman -Syu) |
 | spi / spr| Install / Remove Package |
 | dsync | Sync script for .desktop files |
 
 
 
-Built with ☕ and the **headache** of configuring Waybar.
+Built with ☕ and the **headache**, hahahahaha.
 
