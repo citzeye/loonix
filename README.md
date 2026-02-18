@@ -1,4 +1,4 @@
-🐧 Arch Linux Dotfiles - Loonix
+🐧 Loonix Linux
 
 Welcome to my configuration repository! This repo contains my personal Arch Linux dotfiles, crafted with a focus on clean aesthetics and a fast, efficient workflow.
 
