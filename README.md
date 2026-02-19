@@ -14,6 +14,8 @@ Welcome to my configuration repository! This repo contains my personal Arch Linu
  - Bootloader: Limine
  - login page: sddm
 
+![Preview Desktop](screenshots/preview2.png)
+
 ***
 
 ## 🚀 QUICK INSTALLATION
