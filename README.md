@@ -2,6 +2,8 @@
 
 Welcome to my configuration repository! This repo contains my personal Arch Linux dotfiles, crafted with a focus on clean aesthetics and a fast, efficient workflow.
 
+![Preview Desktop](screenshots/preview.png)
+
 ## 🛠️ TECH STACK
  - WM: Hyprland (Wayland)
  - Terminal: Kitty

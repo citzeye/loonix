@@ -9,9 +9,10 @@ application/x-extension-shtml=zen.desktop
 application/xhtml+xml=zen.desktop
 application/x-extension-xhtml=zen.desktop
 application/x-extension-xht=zen.desktop
-text/plain=micro.desktop
+text/plain=micro-editor.desktop
 application/x-trash=micro.desktop
 application/x-zerosize=micro-editor.desktop
+text/x-scss=micro-editor.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
@@ -24,10 +25,12 @@ application/x-extension-shtml=zen.desktop;
 application/xhtml+xml=zen.desktop;
 application/x-extension-xhtml=zen.desktop;
 application/x-extension-xht=zen.desktop;
-text/plain=micro.desktop;
+text/plain=micro-editor.desktop;micro.desktop;
 application/x-trash=micro.desktop;
 text/javascript=micro-editor.desktop;
 application/x-shellscript=micro-editor.desktop;kitty.desktop;
 application/x-zerosize=micro-editor.desktop;
 text/css=micro-editor.desktop;
 text/markdown=micro-editor.desktop;
+text/x-scss=micro-editor.desktop;
+image/png=swappy.desktop;

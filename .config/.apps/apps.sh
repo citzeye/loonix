@@ -130,12 +130,11 @@ AUR_APPS=(
     "hyprpicker"                    # Color picker
     "matugen-bin"                   # Color theming
     "hyprsunset-git"                 # Blue light filter
-    "hypridle-git"                   # Idle inhibitor (redundant? keep it anyway)
+    "hypridle-git"                   # Idle inhibitor
     
     # --- Optional but Useful ---
     "gpu-screen-recorder-git"       # Screen recording
 )
-
 # Add NVIDIA drivers if detected
 if echo "$GPU_LIST" | grep -iq "NVIDIA"; then
     echo "-> NVIDIA detected, adding nvidia-dkms and nvidia-utils"

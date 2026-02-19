@@ -47,6 +47,9 @@ alias cenv='micro ~/loonix/.config/hypr/configs/env.conf'
 alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
 alias ckeybinds='micro ~/loonix/.config/hypr/configs/keybinds.conf'
 alias crules='micro ~/loonix/.config/hypr/configs/rules.conf'
+	# HYPRPANEL ALIASES ---
+	alias cpanel='micro ~/loonix/.config/hyprpanel/config.json'
+	alias copanel='micro ~/loonix/.config/hyprpanel/options.json'
 
 # --- 7. Aliases: Apps & Shell ---
 alias ckit='micro ~/loonix/.config/kitty/kitty.conf'
@@ -72,6 +75,7 @@ mkd() { mkdir -p "$@" && cd "$_"; }
 # --- 10. Plugins (Arch Linux Path) ---
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
 
 
 # =========================================================
