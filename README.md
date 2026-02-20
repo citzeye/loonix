@@ -10,7 +10,7 @@ Welcome to my configuration repository! This repo contains my personal Arch Linu
  - Shell: Zsh
  - Browser: Brave
  - File Manager: Thunar
- - Text Editor: Micro
+ - Text Editor: VsCode / Micro
  - Bootloader: Limine
  - login page: sddm
 
@@ -34,8 +34,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 > Test your connection with : ping google.com" (press 'ctrl+c' to stop
 > ping)
 >
-> IMPORTANT : MASTER config playground in ```~/loonix/.config```
-> Always use aliase ```deploy``` after edit to send all your config into the right position.
+> ISO : coming soon
 
 ***
 
@@ -47,6 +46,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | Apps | Super + E | File Manager (Thunar) |
 | Apps | Super + Space | App Launcher (Wofi) |
 | Apps | Super + V | Clipboard History |
+| Apps | Super + W | Auto Change Wallpaper / Or click logo on leftbar |
 | Window | Alt + Q | Close Window (Kill) |
 | Window | Super + T | Toggle Floating |
 | Window | Super + F | Fullscreen |
@@ -79,10 +79,10 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | rzsh | Reload Zsh Only |
 | gitpush| Auto Add, Commit ("update"), & Push |
 | c | Jump to ~/.config |
-| deploy | Send All Config into hyprland system |
+| l | Jump to ~/loonix |
+| s | Jump to ~/loonix/.config/scripts |
 | update | Update System (pacman -Syu) |
 | spi / spr| Install / Remove Package |
-| dsync | Sync script for .desktop files |
 
 ***
 
