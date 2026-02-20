@@ -19,6 +19,9 @@
 # Apps Folder (Mentahan .pkg.tar.zst lo biar gak masuk git)
 .config/apps/
 
+# Ignore file installer di folder apps
+.config/apps/*.pkg.tar.zst
+
 # Extension/File Patterns
 *cache*
 *Cache*

@@ -1,46 +1,27 @@
 #!/bin/bash
 
 # =========================================================
-#  LOONIX - MASTER INSTALLATION SCRIPT
+#  LOONIX - MASTER INSTALLATION SCRIPT (Full Version)
 # =========================================================
 
-# --- GPU Detection & Recommendation ---
-echo "--- Scanning Hardware for GPU Drivers ---"
+# --- Warna buat gaya dikit ---
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+echo -e "${BLUE}--- LOONIX: Hardware Scanning ---${NC}"
 
 # Detect VGA or 3D controllers
 GPU_LIST=$(lspci | grep -E "VGA|3D")
-echo "Detected Hardware:"
-echo "$GPU_LIST"
-
-RECOMMENDED_DRIVERS=()
-
-# Logic for NVIDIA
-if echo "$GPU_LIST" | grep -iq "NVIDIA"; then
-    echo "-> [SUGGESTION] NVIDIA detected. You should add: nvidia-dkms nvidia-utils"
-    # RECOMMENDED_DRIVERS+=("nvidia-dkms" "nvidia-utils") # Uncomment to auto-add
-fi
-
-# Logic for Intel
-if echo "$GPU_LIST" | grep -iq "Intel"; then
-    echo "-> [SUGGESTION] Intel detected. You should add: vulkan-intel intel-media-driver"
-fi
-
-# Logic for AMD
-if echo "$GPU_LIST" | grep -iq "AMD|ATI"; then
-    echo "-> [SUGGESTION] AMD detected. You should add: xf86-video-amdgpu vulkan-radeon"
-fi
-
-echo "------------------------------------------"
-sleep 2
-
-echo "--- Installing Comprehensive App List ---"
+echo -e "Detected Hardware:\n$GPU_LIST"
 
 # =========================================================
-#  PART 1: PACMAN PACKAGES (Official Repos)
+#  PART 1: DEFINISI PAKET
 # =========================================================
 
 PACMAN_APPS=(
-    # --- Base System ---
+    # --- Base System & Boot ---
     "limine" "sddm" "hyprland" "xdg-desktop-portal-hyprland" "uwsm" 
     "kitty" "wofi" "dunst" "libnotify"
     
@@ -54,7 +35,7 @@ PACMAN_APPS=(
     
     # --- Themes & Fonts ---
     "ttf-nerd-fonts-symbols" "fontconfig" "nwg-look" 
-    "ttf-jetbrains-mono-nerd"  # Font for icons
+    "ttf-jetbrains-mono-nerd"
     
     # --- Hyprland Ecosystem ---
     "hyprshot" "hyprpaper" "hypridle" "hyprlock"
@@ -66,132 +47,86 @@ PACMAN_APPS=(
     "zsh-autosuggestions" "zsh-syntax-highlighting"
     
     # --- Drivers & Hardware ---
-    "mesa" 
-    
-    # --- Firewall ---
-    "ufw"
-    
-    # --- HyprPanel Core Dependencies ---
-    "wireplumber"
-    "libgtop"
-    "bluez"
-    "bluez-utils"
-    "networkmanager"
-    "dart-sass"
-    "upower"
-    "gvfs"
-    "python"
-    "pacman-contrib"
-    "power-profiles-daemon"
-    
-    # --- Optional but Recommended ---
-    "brightnessctl"       # Brightness control
-    "swww"                # Wallpaper manager for matugen
-    "python-gpustat"      # GPU monitoring (for NVIDIA)
+    "mesa" "wireplumber" "libgtop" "bluez" "bluez-utils" 
+    "networkmanager" "dart-sass" "upower" "python" 
+    "pacman-contrib" "power-profiles-daemon" "brightnessctl"
     
     # --- System Libraries ---
-    "gtk3" "gtk4" "libpulse" "adwaita-icon-theme"
+    "gtk3" "gtk4" "libpulse" "adwaita-icon-theme" "ufw"
 )
-
-echo "📦 Installing Pacman packages..."
-sudo pacman -S --needed "${PACMAN_APPS[@]}" --noconfirm
-
-# =========================================================
-#  PART 2: YAY BOOTSTRAPPING
-# =========================================================
-
-if ! command -v yay &> /dev/null; then
-    echo "📦 Yay not found. Installing now..."
-    sudo pacman -S --needed base-devel git --noconfirm
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    pushd /tmp/yay > /dev/null
-    makepkg -si --noconfirm
-    popd > /dev/null
-    rm -rf /tmp/yay
-fi
-
-# =========================================================
-#  PART 3: AUR PACKAGES
-# =========================================================
 
 AUR_APPS=(
-    # --- Cursor & Themes ---
-    "bibata-cursor-theme-bin"
-    
-    # --- Browser ---
-    "brave-browser-bin"
-    
-    # --- HyprPanel Core (AGS based) ---
-    "aylurs-gtk-shell-git"        # Core AGS (required by HyprPanel)
-    "ags-hyprpanel-git"            # HyprPanel itself
-    
-    # --- HyprPanel Tools & Dependencies ---
-    "grimblast-git"                 # Screenshot for dashboard
-    "hyprpicker"                    # Color picker
-    "matugen-bin"                   # Color theming
-    "hyprsunset-git"                 # Blue light filter
-    "hypridle-git"                   # Idle inhibitor
-    
-    # --- Optional but Useful ---
-    "gpu-screen-recorder-git"       # Screen recording
+    "bibata-cursor-theme-bin" "brave-browser-bin" "aylurs-gtk-shell-git"
+    "ags-hyprpanel-git" "grimblast-git" "hyprpicker" "matugen-bin" 
+    "hyprsunset-git" "gpu-screen-recorder-git"
 )
-# Add NVIDIA drivers if detected
+
+# =========================================================
+#  PART 2: EKSEKUSI INSTALASI (Offline Priority)
+# =========================================================
+
+echo -e "\n${GREEN}📦 Starting Installation...${NC}"
+
+# 1. Cek Folder Apps Lokal (Offline)
+OFFLINE_PATH="$HOME/loonix/.config/apps"
+if [ -d "$OFFLINE_PATH" ] && [ "$(ls -A $OFFLINE_PATH/*.pkg.tar.zst 2>/dev/null)" ]; then
+    echo -e "${YELLOW}📂 Found offline packages in $OFFLINE_PATH. Installing...${NC}"
+    sudo pacman -U --needed --noconfirm $OFFLINE_PATH/*.pkg.tar.zst
+else
+    echo -e "${YELLOW}ℹ️ No offline packages found or folder empty. Skipping to online sync.${NC}"
+fi
+
+# 2. Install sisanya dari repo resmi
+echo -e "${GREEN}🌐 Syncing remaining official packages...${NC}"
+sudo pacman -S --needed --noconfirm "${PACMAN_APPS[@]}"
+
+# 3. Handle GPU Drivers Secara Otomatis
 if echo "$GPU_LIST" | grep -iq "NVIDIA"; then
-    echo "-> NVIDIA detected, adding nvidia-dkms and nvidia-utils"
-    sudo pacman -S --needed nvidia-dkms nvidia-utils --noconfirm
-    # python-gpustat already added in pacman section
+    echo -e "${BLUE}-> Installing NVIDIA drivers (GTX 960M detected)${NC}"
+    sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils python-gpustat
 fi
 
-# Add Intel drivers if detected
 if echo "$GPU_LIST" | grep -iq "Intel"; then
-    echo "-> Intel detected, adding vulkan-intel intel-media-driver"
-    sudo pacman -S --needed vulkan-intel intel-media-driver --noconfirm
+    echo -e "${BLUE}-> Installing Intel graphics drivers${NC}"
+    sudo pacman -S --needed --noconfirm vulkan-intel intel-media-driver
 fi
 
-# Add AMD drivers if detected
 if echo "$GPU_LIST" | grep -iq "AMD|ATI"; then
-    echo "-> AMD detected, adding xf86-video-amdgpu vulkan-radeon"
-    sudo pacman -S --needed xf86-video-amdgpu vulkan-radeon --noconfirm
+    echo -e "${BLUE}-> Installing AMD graphics drivers${NC}"
+    sudo pacman -S --needed --noconfirm xf86-video-amdgpu vulkan-radeon
 fi
 
-echo "📦 Installing AUR packages..."
-yay -S --needed "${AUR_APPS[@]}" --noconfirm
-
 # =========================================================
-#  PART 4: CHANGE DEFAULT SHELL TO ZSH
+#  PART 3: AUR & TOOLS
 # =========================================================
 
+# Bootstrapping yay
+if ! command -v yay &> /dev/null; then
+    echo -e "${YELLOW}📦 Yay not found. Bootstrapping yay...${NC}"
+    git clone https://aur.archlinux.org/yay.git /tmp/yay
+    cd /tmp/yay && makepkg -si --noconfirm && cd - && rm -rf /tmp/yay
+fi
+
+echo -e "${GREEN}💎 Installing AUR packages...${NC}"
+# Kita coba install offline dulu kalau ada file AUR .zst di apps
+yay -S --needed --noconfirm "${AUR_APPS[@]}"
+
+# =========================================================
+#  PART 4: SYSTEM CONFIG (Zsh & Firewall)
+# =========================================================
+
+echo -e "${GREEN}🔧 Finalizing System Config...${NC}"
+
+# Zsh default
 if [ "$SHELL" != "$(which zsh)" ]; then
-    echo "🔧 Changing default shell to zsh..."
     sudo chsh -s $(which zsh) $USER
 fi
 
-# =========================================================
-#  PART 5: FIREWALL CONFIGURATION
-# =========================================================
-
-echo "🔒 Configuring Firewall..."
-
-# Enable and start UFW service
+# UFW Setup
 sudo systemctl enable --now ufw
-
-# Set default policies: Deny all incoming, Allow all outgoing
 sudo ufw default deny incoming
 sudo ufw default allow outgoing
-
-# Allow common essential ports (optional)
-# sudo ufw allow ssh
-
-# Activate the firewall
 sudo ufw --force enable
 
-echo "✅ Firewall is now ACTIVE and will start on boot."
-
-# =========================================================
-#  PART 6: HYPRPANEL POST-INSTALL NOTES
-# =========================================================
-
-echo ""
-echo "🎉 ===== INSTALLATION COMPLETE ===== 🎉"
-echo ""
-
+echo -e "\n${BLUE}🎉 ===== LOONIX INSTALLED SUCCESSFULLY ===== 🎉${NC}"
+echo "Note: Please reboot to apply all changes."
