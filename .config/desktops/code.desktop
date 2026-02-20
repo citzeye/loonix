@@ -1,0 +1,8 @@
+cat <<EOF > ~/loonix/desktops/code.desktop
+[Desktop Entry]
+Name=Visual Studio Code
+Exec=code --ozone-platform-hint=auto
+Icon=vscode
+Type=Application
+Categories=TextEditor;Development;IDE;
+EOF
