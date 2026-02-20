@@ -90,7 +90,7 @@ window#waybar.leftbar > box {
 window#waybar.leftbar .modules-left,
 window#waybar.leftbar .modules-center,
 window#waybar.leftbar .modules-right {
-  font-family: "3270 Nerd Font";
+  font-family: "Symbol Nerd Font";
   min-width: 30px;
   background-color: transparent;
   padding: 5px 5px 0px 2px
@@ -101,7 +101,7 @@ window#waybar.leftbar #custom-browser,
 window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
-window#waybar.leftbar #custom-waypaper,
+window#waybar.leftbar #custom-wp,
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
   color: rgba(138, 109, 218, 0.885);
@@ -116,7 +116,7 @@ window#waybar.leftbar #custom-browser,
 window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
-window#waybar.leftbar #custom-waypaper {
+window#waybar.leftbar #custom-wp {
   font-size: 20px;
   padding: 5px 5px 0px 0px;
 }
@@ -132,7 +132,7 @@ window#waybar.leftbar #custom-browser:hover,
 window#waybar.leftbar #custom-files:hover,
 window#waybar.leftbar #custom-code:hover,
 window#waybar.leftbar #custom-terminal:hover,
-window#waybar.leftbar #custom-waypaper:hover,
+window#waybar.leftbar #custom-wp:hover,
 window#waybar.leftbar #custom-audio:hover,
 window#waybar.leftbar #custom-powermenu:hover {
   color: rgba(255, 255, 255, 0.907);

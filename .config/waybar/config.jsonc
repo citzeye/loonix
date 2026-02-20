@@ -90,7 +90,7 @@
         "gtk-layer-shell": true,
 
         "modules-left": ["custom/launcher"],  
-        "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/waypaper"],
+        "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/wp"],
                 "modules-right": ["custom/audio", "custom/powermenu"],
         
                 "custom/launcher": {
@@ -131,9 +131,9 @@
                     "tooltip": false
                 },
         
-                "custom/waypaper": {
+                "custom/wp": {
                     "format": "󰸉",
-                    "on-click": "hyprctl dispatch exec waypaper",
+                    "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
                     "tooltip": false
                 },
             

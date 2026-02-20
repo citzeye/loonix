@@ -8,7 +8,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}==========================================${NC}"
-echo -e "${BLUE}   LOONIX APPS - Master Installation      ${NC}"
+echo -e "${BLUE}    LOONIX APPS - Master Installation      ${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 # --- 1. Path Setup ---
@@ -29,12 +29,13 @@ if [[ "$1" == "install" ]]; then
     fi
 fi
 
-# --- 4. Online Sync (Cleanup/Missing Deps) ---
-# Daftar aplikasi tetap lo jaga di sini sebagai backup
+# --- 4. Online Sync (Master List) ---
+# Ditambahkan: thunar-volman (auto-mount), p7zip, unzip, unrar (extractors)
 PACMAN_APPS=(
     "limine" "sddm" "hyprland" "xdg-desktop-portal-hyprland" "uwsm" 
     "kitty" "wofi" "dunst" "libnotify" "micro" "thunar" 
-    "thunar-archive-plugin" "gvfs" "zoxide" "eza" "zsh" "btop" 
+    "thunar-archive-plugin" "thunar-volman" "gvfs" "gvfs-mtp" "file-roller"
+    "p7zip" "unzip" "unrar" "zoxide" "eza" "zsh" "btop" 
     "fastfetch" "grim" "slurp" "cliphist" "wl-clipboard" 
     "polkit-kde-agent" "network-manager-applet" "fontconfig" 
     "nwg-look" "ttf-jetbrains-mono-nerd" "hyprshot" "hyprpaper" 
@@ -50,40 +51,9 @@ echo -e "\n${GREEN}🌐 Syncing missing dependencies...${NC}"
 sudo pacman -S --needed --noconfirm "${PACMAN_APPS[@]}"
 
 # --- 5. GPU Drivers Injection ---
+# Khusus buat Dell 7559 lo (GTX 960M), ini dapet dkms biar aman pas update kernel
 echo -e "\n${GREEN}🎮 Configuring GPU Drivers...${NC}"
 if echo "$GPU_LIST" | grep -iq "NVIDIA"; then
-    sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils python-gpustat
+    sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils python-gpustat opencl-nvidia
 elif echo "$GPU_LIST" | grep -iq "Intel"; then
-    sudo pacman -S --needed --noconfirm vulkan-intel intel-media-driver
-elif echo "$GPU_LIST" | grep -iq "AMD|ATI"; then
-    sudo pacman -S --needed --noconfirm xf86-video-amdgpu vulkan-radeon
-fi
-
-# --- 6. AUR Section (Yay) ---
-if ! command -v yay &> /dev/null; then
-    echo -e "${YELLOW}Yay not found. Installing now...${NC}"
-    sudo pacman -S --needed base-devel git --noconfirm
-    git clone https://aur.archlinux.org/yay.git /tmp/yay
-    (cd /tmp/yay && makepkg -si --noconfirm)
-    rm -rf /tmp/yay
-fi
-
-AUR_APPS=(
-    "bibata-cursor-theme-bin" "brave-browser-bin" "aylurs-gtk-shell-git"
-    "ags-hyprpanel-git" "grimblast-git" "hyprpicker" "matugen-bin" 
-    "hyprsunset-git" "gpu-screen-recorder-git"
-)
-
-echo -e "\n${GREEN}💎 Installing AUR packages...${NC}"
-yay -S --needed --noconfirm "${AUR_APPS[@]}"
-
-# --- 7. Post-Install (Zsh & UFW) ---
-echo -e "\n${GREEN}🔧 Finalizing System...${NC}"
-sudo systemctl enable --now ufw
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-sudo ufw --force enable
-
-[ "$SHELL" != "$(which zsh)" ] && sudo chsh -s "$(which zsh)" "$USER"
-
-echo -e "\n${BLUE}🎉 LOONIX MASTER APPS INSTALLED!${NC}"
+    sudo

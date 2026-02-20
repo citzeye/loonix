@@ -8,7 +8,6 @@ export VISUAL='micro'
 
 # Fix untuk AGS dan aplikasi GTK
 export XDG_RUNTIME_DIR=/run/user/$UID
-export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
 
 # --- 2. Simple Prompt Setup ---
@@ -60,7 +59,7 @@ alias cway='micro ~/loonix/.config/waybar/config.jsonc'
 alias cwaycss='micro ~/loonix/.config/waybar/style.css'
 alias czsh='micro ~/loonix/.config/zshs/.zshrc'
 alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
-alias nuke='~/loonix/.config/scripts/r-all.sh && echo "Reload all config DONE!'
+alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
 
 alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
 
