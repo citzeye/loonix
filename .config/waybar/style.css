@@ -103,35 +103,27 @@ window#waybar.leftbar .modules-right {
   margin-left: 0px;
 }
 
-window#waybar.leftbar #custom-launcher,
-window#waybar.leftbar #custom-browser,
-window#waybar.leftbar #custom-code,
-window#waybar.leftbar #custom-terminal,
-window#waybar.leftbar #custom-files,
-window#waybar.leftbar #custom-wp,
-window#waybar.leftbar #custom-audio,
-window#waybar.leftbar #custom-network,
-window#waybar.leftbar #custom-powermenu {
-	font-size: 28px;
-	color: rgba(138, 109, 218, 0.885);
-  /* padding: 0px 0px 0px 0px */
-}
-
 window#waybar.leftbar #custom-launcher {
+	font-size: 28px;
+	color: rgba(0, 255, 162, 0.94);
   padding: 0px 1px 0px 0px;
 }
-/*
+
 window#waybar.leftbar #custom-browser,
 window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp {
+  font-size: 28px;
+	color: rgba(122, 122, 122, 0.89);
   padding: 0px 0px 0px 0px;
 }
-*/
+
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-network,
 window#waybar.leftbar #custom-powermenu {
+  font-size: 24px;
+	color: rgba(122, 122, 122, 0.89);
   padding: 0px 1px 0px 0px;
 } 
 

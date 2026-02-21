@@ -36,18 +36,15 @@ export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
 
 # Not simple prompt
 	get_breadcrumb() {
-	  local path_str="${PWD/#$HOME/󰋜 }"
-	  # Filter supaya kalau di root atau awal gak double pipe
-	  local formatted="${path_str//\// | }"
-	  echo "${formatted}|"
+	  local path_str="${PWD/#$HOME/%n% }"
+	  local formatted="${path_str//\//  }"
+	  echo "${formatted}"
 	}
 
 	setopt prompt_subst
 
-# GANTI INI: Pakai double quotes agar variabel lari saat shell mulai
-# Dan kita pakai precmd supaya dia update SETIAP KALI lo enter/pindah folder
 set_prompt() {
-    PROMPT="%F{blue}%n@%m%f | %F{cyan}$(get_breadcrumb)%f %F{green}>%f
+    PROMPT="%F{#4dff71}%m %f %F{#f9f06b}$(get_breadcrumb)%f %F{#df44db} %f
 "
 }
 precmd_functions+=(set_prompt)
