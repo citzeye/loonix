@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Loonix Login</title>
+</head>
+<body>
+	   <div id="app">
+	        <div class="login-container">
+	            <h1 class="logo-text">LOONIX</h1>
+	            
+	            <div class="session-dropdown">
+	                <span id="current-session">Hyprland</span> <span class="icon">󰅀</span>
+	            </div>
+	    
+	            <div class="main-auth-box">
+	                <div class="input-fields">
+	                    <input type="text" id="username" class="login-input" placeholder="Username">
+	                    <input type="password" id="password" class="login-input" placeholder="Password">
+	                </div>
+	                
+	                <button class="btn-go" onclick="launch()">GO</button>
+	            </div>
+	    
+	            <div class="action-bar">
+	                <button class="action-btn" title="Lock">󰌾</button>
+	                <button class="action-btn" onclick="reboot()" title="Reboot">󰑓</button>
+	                <button class="action-btn" onclick="poweroff()" title="Shutdown">󰐥</button>
+	                <button class="action-btn" onclick="openTTY()" title="TTY">󰆍</button>
+	            </div>
+	            
+	            <p id="message"></p>
+	        </div>
+	    </div>
+    <script src="./src/main.js" type="module"></script>
+</body>
+</html>
