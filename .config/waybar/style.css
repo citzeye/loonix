@@ -17,16 +17,17 @@
 
 #workspaces button {
   background: transparent;
+  font-weight: bold;
   color: #505050;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 0px 0px 5px;
 }
 
 #workspaces button:hover {
-  color: rgba(255, 255, 255, 0.907);
+  color: rgba(0, 255, 162, 0.94);
 }
 
 #workspaces button.active {
-  color: rgba(255, 255, 255, 0.907);
+  color: rgba(0, 255, 162, 0.94);
 }
 
 #media-control {
@@ -39,25 +40,25 @@
 }
 
 #mpris {
-  color: rgba(121, 121, 121, 0.8);
-  font-size: 12px;
+  color: rgba(188, 188, 188, 0.8);
+  font-size: 13.5px;
 }
 
 #custom-media-play {
-  color: rgba(121, 121, 121, 0.8);
+  color: rgba(0, 255, 162, 0.94);
   padding: 0px 10px 0px 0px;
 }
 
 #custom-media-prev,
 #custom-media-next {
-  color: rgba(121, 121, 121, 0.8);
+  color: rgba(138, 109, 218, 0.885);
   font-size: 15px;
   padding: 0px 6px 0px 5px;
 }
 
 #clock {
   color: rgba(0, 255, 162, 0.94);
-  font-weight: bold;
+  /* font-weight: bold; */
   padding: 0px 5px 0px 5px;
   margin-left: 8px;
 }
@@ -109,6 +110,7 @@ window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp,
 window#waybar.leftbar #custom-audio,
+window#waybar.leftbar #custom-network,
 window#waybar.leftbar #custom-powermenu {
 	font-size: 28px;
 	color: rgba(138, 109, 218, 0.885);
@@ -128,6 +130,7 @@ window#waybar.leftbar #custom-wp {
 }
 */
 window#waybar.leftbar #custom-audio,
+window#waybar.leftbar #custom-network,
 window#waybar.leftbar #custom-powermenu {
   padding: 0px 1px 0px 0px;
 } 
@@ -139,6 +142,7 @@ window#waybar.leftbar #custom-code:hover,
 window#waybar.leftbar #custom-terminal:hover,
 window#waybar.leftbar #custom-wp:hover,
 window#waybar.leftbar #custom-audio:hover,
+window#waybar.leftbar #custom-network:hover,
 window#waybar.leftbar #custom-powermenu:hover {
   color: rgba(255, 255, 255, 0.907);
 }

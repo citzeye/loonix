@@ -50,7 +50,7 @@
             },
             "custom/media-icon": { "format": "  ", "tooltip": false },
             "custom/media-prev": { "format": " 󰒮", "on-click": "playerctl previous", "tooltip": false },
-            "custom/media-play": { "format": "", "on-click": "playerctl play-pause", "tooltip": false },
+            "custom/media-play": { "format": " ", "on-click": "playerctl play-pause", "tooltip": false },
             "custom/media-next": { "format": "󰼧", "on-click": "playerctl next", "tooltip": false },
         "clock": {
             "format": "{:%H:%M}",
@@ -92,7 +92,7 @@
 
         "modules-left": ["custom/launcher"],  
         "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/wp"],
-                "modules-right": ["custom/audio", "custom/powermenu"],
+                "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
         
                 "custom/launcher": {
                     "format": "󰍜",
@@ -133,7 +133,7 @@
                 },
         
                 "custom/wp": {
-                    "format": "󰸉",
+                    "format": "",
                     "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
                     "tooltip": false
                 },
@@ -144,8 +144,16 @@
             "tooltip": false
         },
 
+        "custom/network": {
+            "format": "",
+            "on-click": "hyprctl dispatch exec pavucontrol",
+            "tooltip": false
+        },
+
+        
+
         "custom/powermenu": {
-            "format": "󰗽",
+            "format": "󰤆",
             "on-click": "hyprctl dispatch exec wlogout",
             "tooltip": false
         }
