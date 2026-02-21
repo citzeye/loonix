@@ -34,7 +34,7 @@
 }
 
 #custom-media-icon {
-  color:  rgba(255, 255, 255, 0.907);
+  color:  rgba(0, 255, 162, 0.94);
   padding-right: 5px;
 }
 
@@ -52,11 +52,11 @@
 #custom-media-next {
   color: rgba(121, 121, 121, 0.8);
   font-size: 15px;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 6px 0px 5px;
 }
 
 #clock {
-  color: rgba(255, 255, 255, 0.907);
+  color: rgba(0, 255, 162, 0.94);
   font-weight: bold;
   padding: 0px 5px 0px 5px;
   margin-left: 8px;
@@ -70,7 +70,7 @@
 }
 
 #clock:hover {
-  color: rgba(255, 255, 255, 0.907);
+  color: rgba(89, 89, 89, 0.89);
 }
 
 /* ####################--- LEFT BAR ---################# */
@@ -110,7 +110,7 @@ window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp,
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
-	font-size: 26px;
+	font-size: 28px;
 	color: rgba(138, 109, 218, 0.885);
   /* padding: 0px 0px 0px 0px */
 }

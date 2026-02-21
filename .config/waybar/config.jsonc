@@ -46,7 +46,7 @@
 
             "mpris": {
                 "format": "{artist} - {title}",
-                "max-length": 50
+                "max-length": 52
             },
             "custom/media-icon": { "format": "  ", "tooltip": false },
             "custom/media-prev": { "format": " 󰒮", "on-click": "playerctl previous", "tooltip": false },

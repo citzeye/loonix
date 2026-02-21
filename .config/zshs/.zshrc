@@ -39,7 +39,7 @@ export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
 	  local path_str="${PWD/#$HOME/󰋜 }"
 	  # Filter supaya kalau di root atau awal gak double pipe
 	  local formatted="${path_str//\// | }"
-	  echo "${formatted} |"
+	  echo "${formatted}|"
 	}
 
 	setopt prompt_subst
@@ -48,7 +48,7 @@ export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
 # Dan kita pakai precmd supaya dia update SETIAP KALI lo enter/pindah folder
 set_prompt() {
     PROMPT="%F{blue}%n@%m%f | %F{cyan}$(get_breadcrumb)%f %F{green}>%f
-"su
+"
 }
 precmd_functions+=(set_prompt)
 
