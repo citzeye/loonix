@@ -85,9 +85,10 @@
         "margin-top": 0,
         "margin-right": 0,
         "margin-left": 0,
-        "margin-bottom":0, 
+        "margin-bottom":0,
         "exclusive": true,
         "gtk-layer-shell": true,
+        
 
         "modules-left": ["custom/launcher"],  
         "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/wp"],
@@ -102,7 +103,7 @@
                 "custom/browser": {
                     "format": "{}",
                     "interval": 2,
-                    "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#fb5416\">󰈹</span>'; else echo '󰈹'; fi",
+                    "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#bb5416\">󰈹</span>'; else echo '󰈹'; fi",
                     "on-click": "brave --password-store=basic",
                     "tooltip": false
                 },
@@ -110,7 +111,7 @@
                 "custom/code": {
                     "format": "{}",
                     "interval": 2,
-                    "exec": "if pgrep -x code > /dev/null; then echo '<span color=\"#007acc\"></span>'; else echo ''; fi",
+                    "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#0088CC\"></span>'; else echo ''; fi",
                     "on-click": "hyprctl dispatch exec code",
                     "tooltip": false
                 },

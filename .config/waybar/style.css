@@ -40,7 +40,7 @@ window#waybar {
 }
 
 #mpris {
-  color: #aaaaaa;
+  color: rgba(121, 121, 121, 0.8);
   font-size: 12px;
 }
 
@@ -78,14 +78,19 @@ window#waybar {
 
 window#waybar.leftbar {
 	font-family: "3270 Nerd Font Mono";
-	background-color: #1B1B1B;
+	background-color: transparent;
   min-width: 26px;
 }
 
 window#waybar.leftbar > box {
-	background-color: transparent;
+	background-color: #1B1B1B;
 	min-width: 26px;
-	padding: 0px 0px 0px 0px;
+  margin-top: 5px;
+  margin-right: 0px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+	padding: 0px 1px 0px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
 
 window#waybar.leftbar .modules-left,
@@ -93,7 +98,10 @@ window#waybar.leftbar .modules-center,
 window#waybar.leftbar .modules-right {
   min-width: 26px;
   background-color: transparent;
-  padding: 0px 0px 0px 2px
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
 }
 
 window#waybar.leftbar #custom-launcher,
@@ -104,12 +112,13 @@ window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp,
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
-	font-size: 30px;
+	font-size: 26px;
 	color: rgba(138, 109, 218, 0.885);
+  padding: 0px 0px 0px 0px
 }
 
-window#waybar.leftbar #custom-launcher {
-  padding: 5px 0px 0px 0px;
+/* window#waybar.leftbar #custom-launcher {
+;
 }
 
 window#waybar.leftbar #custom-browser,
@@ -117,13 +126,13 @@ window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp {
-  padding: 5px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
-  padding: 0px 0px 5px 0px;
-}
+  padding: 0px 0px 0px 0px;
+} */
 
 window#waybar.leftbar #custom-launcher:hover,
 window#waybar.leftbar #custom-browser:hover,
