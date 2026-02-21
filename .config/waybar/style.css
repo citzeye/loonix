@@ -1,14 +1,13 @@
-window#waybar {
+/* ####################--- TOP BAR ---################# */window#waybar {
   background: transparent;
   font-family: "Kode Mono";
-  font-size: 12px;
+  font-size: 12.5px;
 }
 
 .modules-left,
 .modules-center,
 .modules-right {
   background: transparent;
-  padding: 0px;
   margin: 0px;
 }
 
@@ -19,7 +18,7 @@ window#waybar {
 #workspaces button {
   background: transparent;
   color: #505050;
-  padding: 0px 4px 0px 0px;
+  padding: 0px 5px 0px 5px;
 }
 
 #workspaces button:hover {
@@ -46,27 +45,27 @@ window#waybar {
 
 #custom-media-play {
   color: rgba(121, 121, 121, 0.8);
-  padding: 0 10px;
+  padding: 0px 10px 0px 0px;
 }
 
 #custom-media-prev,
 #custom-media-next {
   color: rgba(121, 121, 121, 0.8);
   font-size: 15px;
-  padding: 0 5px;
+  padding: 0px 5px 0px 5px;
 }
 
 #clock {
   color: rgba(255, 255, 255, 0.907);
   font-weight: bold;
-  padding: 0px 8px;
+  padding: 0px 5px 0px 5px;
   margin-left: 8px;
 }
 
 #workspaces,
 #media-control,
 #clock {
-  border-radius: 4px;
+  border-radius: 5px;
   background: #1B1B1B;
 }
 
@@ -74,7 +73,7 @@ window#waybar {
   color: rgba(255, 255, 255, 0.907);
 }
 
-/* --- BAR KEDUA (LEFT) --- */
+/* ####################--- LEFT BAR ---################# */
 
 window#waybar.leftbar {
 	font-family: "3270 Nerd Font Mono";
@@ -89,16 +88,15 @@ window#waybar.leftbar > box {
   margin-right: 0px;
   margin-bottom: 5px;
   margin-left: 0px;
-	padding: 0px 1px 0px 0px;
+	padding: 0px 0px 0px 0px;
   border-radius: 0px 5px 5px 0px;
 }
 
 window#waybar.leftbar .modules-left,
 window#waybar.leftbar .modules-center,
 window#waybar.leftbar .modules-right {
-  min-width: 26px;
   background-color: transparent;
-  margin-top: 0px;
+  margin-top: -2px;
   margin-right: 0px;
   margin-bottom: 0px;
   margin-left: 0px;
@@ -114,13 +112,13 @@ window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
 	font-size: 26px;
 	color: rgba(138, 109, 218, 0.885);
-  padding: 0px 0px 0px 0px
+  /* padding: 0px 0px 0px 0px */
 }
 
-/* window#waybar.leftbar #custom-launcher {
-;
+window#waybar.leftbar #custom-launcher {
+  padding: 0px 1px 0px 0px;
 }
-
+/*
 window#waybar.leftbar #custom-browser,
 window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
@@ -128,11 +126,11 @@ window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-wp {
   padding: 0px 0px 0px 0px;
 }
-
+*/
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-powermenu {
-  padding: 0px 0px 0px 0px;
-} */
+  padding: 0px 1px 0px 0px;
+} 
 
 window#waybar.leftbar #custom-launcher:hover,
 window#waybar.leftbar #custom-browser:hover,

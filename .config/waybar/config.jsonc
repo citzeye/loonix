@@ -8,7 +8,7 @@
         "margin-top": 5,
         "margin-right": 5,
         "margin-left": 5,
-        "margin-bottom": 5,
+        "margin-bottom": 0,
         "exclusive": false,
 
         "modules-left": ["hyprland/workspaces"],
@@ -80,7 +80,7 @@
         "name": "leftbar",
         "layer": "top",
         "position": "left",
-        "width": 30,
+        "width": 26,
         "height": 1080,
         "margin-top": 0,
         "margin-right": 0,
