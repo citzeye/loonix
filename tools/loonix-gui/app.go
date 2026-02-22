@@ -2,7 +2,10 @@ package main
 
 import (
 	"context"
+	"os"
 	"os/exec"
+	"path/filepath"
+
 	"github.com/wailsapp/wails/v2/pkg/runtime"
 )
 
@@ -21,42 +24,56 @@ func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
 }
 
-// --- FUNGSI SAKTI LOONIX ---
-
-// Ubah nama jadi LaunchHyprland biar sinkron sama main.js
-// Kita tambahin parameter password string
+// --- FUNGSI SAKTI LOONIX WKWKWKWWKWK---
 func (a *App) LaunchHyprland(password string) string {
-	// Logika sementara: Apapun passwordnya (selama gak kosong), dia jalan.
-	// Nanti kita bisa ganti jadi pengecekan asli ke sistem.
 	if password == "" {
 		return "Password is required!"
 	}
 
-	// Menjalankan script start-hyprland
+	// Ambil path HOME USER otomatis
+	home, _ := os.UserHomeDir()
+	splashPath := filepath.Join(home, "loonix/.config/media/loonix-splash.mp4")
+
+	// 1. Jalankan MPV Splash Screen (Blocking/Menunggu video beres)
+	splashCmd := exec.Command("mpv",
+		"--vo=gpu",
+		"--hwdec=auto",
+		"--fs",
+		"--no-osc",
+		"--no-osd-bar",
+		"--cursor-autohide=always",
+		"--no-input-default-bindings",
+		splashPath,
+	)
+
+	// Pakai .Run() supaya baris di bawahnya nunggu sampe video selesai muter
+	_ = splashCmd.Run()
+
+	// 2. Jalankan script start-hyprland
+	// Pakai .Start() supaya Go bisa langsung lanjut ke Quit tanpa nunggu Hyprland mati
 	cmd := exec.Command("/usr/local/bin/start-hyprland")
-	
 	err := cmd.Start()
 	if err != nil {
 		return "Failed to start Hyprland"
 	}
 
-	// Setelah Hyprland dipicu, tutup window login-nya
+	// 3. Keluar dari aplikasi login-menu (Wails)
 	runtime.Quit(a.ctx)
 	return "Success"
 }
 
-// Reboot buat restart mesin
+// Reboot buat restart komputer mahal lu
 func (a *App) Reboot() {
 	_ = exec.Command("reboot").Run()
 }
 
-// OpenTTY buat pindah ke TTY lain (misal TTY2)
+// OpenTTY biar lu bisa pindah ke TTY lain (misal TTY2)
 func (a *App) OpenTTY() {
-	// Di Linux, kita bisa pindah tty pake chvt
+	// Pastikan user sudah masuk sudoers NOPASSWD untuk chvt
 	_ = exec.Command("sudo", "chvt", "2").Run()
 }
 
-// PowerOff buat matiin mesin langsung dari GUI
+// PowerOff buat matiin komputer mahal lu langsung dari GUI
 func (a *App) PowerOff() {
 	_ = exec.Command("poweroff").Run()
 }
