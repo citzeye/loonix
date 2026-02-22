@@ -25,7 +25,7 @@ fi
 # --- 1. Environment Variables ---
 export EDITOR='micro'
 export VISUAL='micro'
-
+export QT_QPA_PLATFORMTHEME=qt5ct #paksa aplikasi QT pakai gaya GTK
 # Fix untuk AGS dan aplikasi GTK
 export XDG_RUNTIME_DIR=/run/user/$UID
 export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
@@ -37,14 +37,14 @@ export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
 # Not simple prompt
 	get_breadcrumb() {
 	  local path_str="${PWD/#$HOME/%n% }"
-	  local formatted="${path_str//\//  }"
+	  local formatted="${path_str//\// }"
 	  echo "${formatted}"
 	}
 
 	setopt prompt_subst
 
 set_prompt() {
-    PROMPT="%F{#4dff71}%m %f %F{#f9f06b}$(get_breadcrumb)%f %F{#df44db} %f
+    PROMPT="%F{#4dff71} %m %f%F{#D1DAE3}$(get_breadcrumb)%f %F{#7D63C4} %f
 "
 }
 precmd_functions+=(set_prompt)
