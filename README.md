@@ -52,7 +52,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | Window | Super + F | Fullscreen |
 | Window | Super + Arrow or Vim Mode HJKL | Move Focus |
 | System | Super + M | Power Menu |
-| System | Super + Home | ☢️ THE "NUKE & RELOAD" Reload All Configs |
+| System | CTRL + Home | ☢️ THE "NUKE & RELOAD" Reload All Configs |
 | Screen | Super + Print | Screenshot Region |
 | Screen | Print | Screenshot Fullscreen |
 | Workspc | Alt + [1-5] | Switch Workspace |
@@ -89,12 +89,17 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | :--- | :--- |
 | nuke | TOTAL REFRESH: All GUI |
 | rzsh | Source Zsh Only |
-| nz | Reload nuke and rzsh |
+| nr | Reload nuke and rzsh |
 | gogit| Auto Add, Commit ("update"), & Push |
+| b | Clear Terminal |
+| bb | back 1 folder |
+| bbb | back 2 folder |
+| bbbb | back 3 folder |
+| bbbbb | back 4 folder |
 | c | Jump to ~/.config |
 | l | Jump to ~/loonix |
+| lt | Jump to ~/loonix/tools |
 | s | Jump to ~/loonix/.config/scripts |
-| t | Jump to ~/loonix/tools |
 | z | Jump to ~/home/user |
 | update | Update System (pacman -Syu) |
 | spi / spr| Pacman Install / Remove Package |

@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 # =========================================================
 #  ZSH CONFIGURATION (LOONIX MASTER)
 # =========================================================
@@ -26,9 +27,9 @@ fi
 export EDITOR='micro'
 export VISUAL='micro'
 export QT_QPA_PLATFORMTHEME=qt5ct #paksa aplikasi QT pakai gaya GTK
-# Fix untuk AGS dan aplikasi GTK
 export XDG_RUNTIME_DIR=/run/user/$UID
 export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
+export PATH=$PATH:$(go env GOPATH)/bin #Go Lang Path
 
 # --- 2. Simple Prompt Setup ---
 #PROMPT='%F{cyan}%n@%m%f >
@@ -67,15 +68,21 @@ autoload -Uz compinit
 compinit -i
 
 # --- 5. Aliases: Navigation ---
-alias ,='clear'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias c='cd ~/loonix/.config'
-alias l='cd ~/loonix'
-alias ltlg='cd ~/loonix/tools/loonix-gui'
-alias ltll='cd ~/loonix/tools/loonix-login'
-alias s='cd ~/loonix/.config/scripts'
-alias t='cd ~/loonix/tools'
+alias b='clear'
+alias bb='cd .. && ls'
+alias bbb='cd ../.. && ls'
+alias bbbb='cd ../../../ && ls'
+alias bbbbb='cd ../../../../ && ls'
+alias c='cd ~/loonix/.config && ls'
+alias l='cd ~/loonix && ls'
+alias lt='cd ~/loonix/tools && ls'
+alias ltlm='cd ~/loonix/tools/login-menu && ls'
+alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
+alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
+alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
+alias run-loonix-login='~/loonix/tools/loonix-login'
+alias s='cd ~/loonix/.config/scripts && ls'
+
 #alias z='cd'
 
 
@@ -101,7 +108,7 @@ alias czsh='micro ~/loonix/.config/zshs/.zshrc'
 alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
 alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
 # Super alias fushion refresh total
-alias nz="nuke && rzsh"
+alias nr="nuke && rzsh"
 
 alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
 
