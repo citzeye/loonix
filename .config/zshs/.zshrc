@@ -109,6 +109,8 @@ alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && c
 alias update='sudo pacman -Syu'
 alias spi='sudo pacman -S'
 alias spr='sudo pacman -Rs'
+alias yi='yay -S'
+alias yr='yay -Rs'
 alias ls='ls -la --color=auto'
 alias la='ls -a'
 

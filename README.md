@@ -52,7 +52,7 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 | Window | Super + F | Fullscreen |
 | Window | Super + Arrow or Vim Mode HJKL | Move Focus |
 | System | Super + M | Power Menu |
-| System | Super + Home | Reload All Configs |
+| System | Super + Home | ☢️ THE "NUKE & RELOAD" Reload All Configs |
 | Screen | Super + Print | Screenshot Region |
 | Screen | Print | Screenshot Fullscreen |
 | Workspc | Alt + [1-5] | Switch Workspace |
