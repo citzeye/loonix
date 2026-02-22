@@ -3,132 +3,94 @@
 #  ZSH CONFIGURATION (LOONIX MASTER)
 # =========================================================
 
-# Force Zsh if we are in VS Code and not already in Zsh
+# --- 1. Environment Variables (WAJIB PALING ATAS) ---
+export EDITOR='micro'
+export VISUAL='micro'
+export QT_QPA_PLATFORMTHEME=qt5ct 
+export XDG_RUNTIME_DIR=/run/user/$UID
+export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$(go env GOPATH)/bin:$PATH"
+
+# Fix Driver buat Wails & Cage for some hardware
+export WEBKIT_DISABLE_GPU_LEVEL=1
+export WLR_NO_HARDWARE_CURSORS=1
+
+# --- 2. Loonix Boot Sequence ---
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  # Paksa pake pixman renderer biar gak EGL_BAD_ALLOC
+  # Pake exec supaya hemat RAM, zsh diganti total sama cage
+  WLR_RENDERER=pixman exec cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login
+fi
+
+# Force Zsh if we are in VS Code
 if [[ "$TERM_PROGRAM" == "vscode" ]] && [[ "$SHELL" != "/usr/bin/zsh" ]]; then
     export SHELL=/usr/bin/zsh
     exec /usr/bin/zsh -l
 fi
 
-# --- Loonix Boot Sequence ---
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  # Langsung jalankan login menu. 
-  # Kita pake 'exec' supaya zsh-nya mati dan diganti total sama cage.
-  exec cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login
-fi
+# --- 3. Prompt Setup (The Creator Aesthetic) ---
+get_breadcrumb() {
+  local path_str="${PWD/#$HOME/%n% }"
+  local formatted="${path_str//\// }"
+  echo "${formatted}"
+}
 
-# --- 1. Environment Variables ---
-export EDITOR='micro'
-export VISUAL='micro'
-export QT_QPA_PLATFORMTHEME=qt5ct #paksa aplikasi QT pakai gaya GTK
-export XDG_RUNTIME_DIR=/run/user/$UID
-export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$PATH"
-export PATH=$PATH:$(go env GOPATH)/bin #Go Lang Path
-
-# --- 2. Simple Prompt Setup ---
-#PROMPT='%F{cyan}%n@%m%f >
-#'
-
-# Not simple prompt
-	get_breadcrumb() {
-	  local path_str="${PWD/#$HOME/%n% }"
-	  local formatted="${path_str//\// }"
-	  echo "${formatted}"
-	}
-
-	setopt prompt_subst
-
+setopt prompt_subst
 set_prompt() {
     PROMPT="%F{#4dff71} %m %f%F{#D1DAE3}$(get_breadcrumb)%f %F{#7D63C4} %f
 "
 }
 precmd_functions+=(set_prompt)
 
-# --- Cursor Setup (Underline) ---
+# Cursor Setup (Underline)
 _set_cursor() { echo -ne "\e[4 q"; }
 precmd_functions+=(_set_cursor)
 _set_cursor
 
-# --- 3. History & Behavior ---
+# --- 4. History & Behavior ---
 HISTFILE=~/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-setopt appendhistory
-setopt share_history
-setopt autocd
+setopt appendhistory share_history autocd
+autoload -Uz compinit && compinit -i
 
-# --- 4. Completion ---
-autoload -Uz compinit
-compinit -i
-
-# --- 5. Aliases: Navigation ---
+# --- 5. Aliases: Navigation & Loonix Tools ---
 alias b='clear'
 alias bb='cd .. && ls'
-alias bbb='cd ../.. && ls'
-alias bbbb='cd ../../../ && ls'
-alias bbbbb='cd ../../../../ && ls'
 alias c='cd ~/loonix/.config && ls'
 alias l='cd ~/loonix && ls'
 alias lt='cd ~/loonix/tools && ls'
 alias ltlm='cd ~/loonix/tools/login-menu && ls'
 alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
-alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
-alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
-alias run-loonix-login='~/loonix/tools/loonix-login'
+alias ltll='cd ~/loonix/tools/loonix-login && ls'
 alias s='cd ~/loonix/.config/scripts && ls'
 
-#alias z='cd'
+# Dev Aliases
+alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
+alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
+alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
 
-
-# --- 6. Aliases: Hyprland Configs (Target: Loonix Folder) ---
+# --- 6. Aliases: Configs ---
 alias chypr='micro ~/loonix/.config/hypr/hyprland.conf'
-alias ccolors='micro ~/loonix/.config/hypr/colors.conf'
-alias cidle='micro ~/loonix/.config/hypr/hypridle.conf'
-alias clock='micro ~/loonix/.config/hypr/hyprlock.conf'
-alias cpaper='micro ~/loonix/.config/hypr/hyprpaper.conf'
 alias cenv='micro ~/loonix/.config/hypr/configs/env.conf'
 alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
-alias ckeybinds='micro ~/loonix/.config/hypr/configs/keybinds.conf'
-alias crules='micro ~/loonix/.config/hypr/configs/rules.conf'
-	# HYPRPANEL ALIASES ---
-	#alias cpanel='micro ~/loonix/.config/hyprpanel/config.json'
-	#alias copanel='micro ~/loonix/.config/hyprpanel/options.json'
-
-# --- 7. Aliases: Apps & Shell ---
-alias ckit='micro ~/loonix/.config/kitty/kitty.conf'
-alias cway='micro ~/loonix/.config/waybar/config.jsonc'
-alias cwaycss='micro ~/loonix/.config/waybar/style.css'
 alias czsh='micro ~/loonix/.config/zshs/.zshrc'
 alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
 alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
-# Super alias fushion refresh total
 alias nr="nuke && rzsh"
-
 alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
 
-# --- 8. Aliases: Package Manager ---
-alias update='sudo pacman -Syu'
+# --- 7. Aliases: Package Manager ---
 alias spi='sudo pacman -S'
 alias spr='sudo pacman -Rs'
 alias yi='yay -S'
 alias yr='yay -Rs'
 alias ls='ls -la --color=auto'
-alias la='ls -a'
 
-# --- 9. Custom Functions ---
-mkd() { mkdir -p "$@" && cd "$_"; }
-
-# --- 10. Plugins (Arch Linux Path) ---
+# --- 8. Plugins & Extra ---
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-
-# --- 11. ByPass Login ---
-# --- Auto Start Hyprland dari TTY1 ---
-#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-#  exec Hyprland
-#fi
-
-
-# =========================================================
 eval "$(zoxide init zsh)"
-#  END OF CONFIG
-# =========================================================
+
+# --- 9. Pintu Darurat (ByPass) ---
+# Uncomment kalau mau balik ke login TTY biasa
+# alias bypass='exit'
