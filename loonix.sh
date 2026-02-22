@@ -48,10 +48,10 @@ for folder in "$DOTS_DIR"/*/; do
     fi
 done
 
-# 5. Sisa Script
+# 5. Rest Script
 for script in ./.config/scripts/*.sh; do
     filename=$(basename "$script")
-    [[ " ${PRIORITY[*]} " =~ " ${filename%.sh} " || "$filename" == "deploy.sh" || "$filename" == "r-all.sh" ]] && continue
+    [[ " ${PRIORITY[*]} " =~ " ${filename%.sh} " || "$filename" == "r-all.sh" ]] && continue
     bash "$script" install
 done
 
@@ -59,8 +59,3 @@ done
 zsh -c "source ~/.zshrc"
 
 echo "--- 🎉 Loonix Installation Finished! ---"
-
-# 7. Self-Destruct (Hanya untuk User/Cloner)
-if [ "$IS_DEV" = false ]; then
-    rm -- "$0"
-fi
