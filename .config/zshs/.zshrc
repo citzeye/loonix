@@ -90,8 +90,8 @@ alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
 alias ckeybinds='micro ~/loonix/.config/hypr/configs/keybinds.conf'
 alias crules='micro ~/loonix/.config/hypr/configs/rules.conf'
 	# HYPRPANEL ALIASES ---
-	alias cpanel='micro ~/loonix/.config/hyprpanel/config.json'
-	alias copanel='micro ~/loonix/.config/hyprpanel/options.json'
+	#alias cpanel='micro ~/loonix/.config/hyprpanel/config.json'
+	#alias copanel='micro ~/loonix/.config/hyprpanel/options.json'
 
 # --- 7. Aliases: Apps & Shell ---
 alias ckit='micro ~/loonix/.config/kitty/kitty.conf'
