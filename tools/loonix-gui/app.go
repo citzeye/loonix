@@ -5,8 +5,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
-
-	"github.com/wailsapp/wails/v2/pkg/runtime"
+	"syscall"
 )
 
 // App struct
@@ -30,11 +29,10 @@ func (a *App) LaunchHyprland(password string) string {
 		return "Password is required!"
 	}
 
-	// Ambil path HOME USER otomatis
 	home, _ := os.UserHomeDir()
 	splashPath := filepath.Join(home, "loonix/.config/media/loonix-splash.mp4")
 
-	// 1. Jalankan MPV Splash Screen (Blocking/Menunggu video beres)
+	// 1. Jalankan MPV Splash Screen (Blocking)
 	splashCmd := exec.Command("mpv",
 		"--vo=gpu",
 		"--hwdec=auto",
@@ -45,20 +43,27 @@ func (a *App) LaunchHyprland(password string) string {
 		"--no-input-default-bindings",
 		splashPath,
 	)
-
-	// Pakai .Run() supaya baris di bawahnya nunggu sampe video selesai muter
 	_ = splashCmd.Run()
 
-	// 2. Jalankan script start-hyprland
-	// Pakai .Start() supaya Go bisa langsung lanjut ke Quit tanpa nunggu Hyprland mati
-	cmd := exec.Command("/usr/local/bin/start-hyprland")
-	err := cmd.Start()
+	// 2. Transisi "Wujud" ke UWSM
+	// Kita cari path binary uwsm
+	uwsmPath, err := exec.LookPath("uwsm")
 	if err != nil {
-		return "Failed to start Hyprland"
+		return "uwsm not found in PATH"
 	}
 
-	// 3. Keluar dari aplikasi login-menu (Wails)
-	runtime.Quit(a.ctx)
+	// Argumen untuk uwsm
+	args := []string{"uwsm", "start", "hyprland-session.target"}
+
+	// Gunakan syscall.Exec untuk mengganti proses Wails menjadi UWSM
+	// Ini akan membuat wallpaper, cursor, dan config lo jalan normal
+	// karena UWSM mengambil alih environment secara utuh.
+	err = syscall.Exec(uwsmPath, args, os.Environ())
+
+	if err != nil {
+		return "Failed to exec uwsm: " + err.Error()
+	}
+
 	return "Success"
 }
 

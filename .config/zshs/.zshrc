@@ -11,16 +11,9 @@ fi
 
 # --- Loonix Boot Sequence ---
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  # 1. Jalankan Loonix-Login di dalam Cage
-  cage ~/loonix/tools/loonix-login/bin/loonix-login
-
-  # 2. Begitu Cage ditutup (User sukses login), tembak pake UWSM
-  if uwsm check may-start; then
-      exec uwsm start hyprland.desktop
-  else
-      # Fallback kalau uwsm bermasalah, biar gak nyangkut di TTY
-      exec Hyprland
-  fi
+  # Langsung jalankan login menu. 
+  # Kita pake 'exec' supaya zsh-nya mati dan diganti total sama cage.
+  exec cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login
 fi
 
 # --- 1. Environment Variables ---
