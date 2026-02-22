@@ -7,7 +7,7 @@ Welcome to my configuration repository! This repo contains my personal Arch Linu
 ## 🛠️ TECH STACK
  - WM: Hyprland (Wayland)
  - Terminal: Kitty
- - Shell: Zsh | Loonix Breadcrumb
+ - Shell: Zsh | Loonix Breadcrumb  loonix citz loonix .config go  
  - Browser: Brave
  - File Manager: Thunar
  - Text Editor: VsCode / Micro
