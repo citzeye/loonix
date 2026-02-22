@@ -103,7 +103,7 @@
                 "custom/browser": {
                     "format": "{}",
                     "interval": 2,
-                    "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#bb5416\">󰈹</span>'; else echo '󰈹'; fi",
+                    "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#d51bb6dd\"></span>'; else echo '󰈹'; fi",
                     "on-click": "uwsm app -- brave --password-store=basic",
                     "tooltip": false
                 },
@@ -149,7 +149,6 @@
             "on-click": "uwsm app -- nm-connection-editor",
             "tooltip": false
         },
-
         
 
         "custom/powermenu": {
