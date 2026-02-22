@@ -1,5 +1,5 @@
-#!/usr/bin/env zsh
 # =========================================================
+#!/usr/bin/env zsh
 #  ZSH CONFIGURATION (LOONIX MASTER)
 # =========================================================
 
@@ -123,9 +123,11 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # --- 11. ByPass Login ---
 # --- Auto Start Hyprland dari TTY1 ---
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  exec Hyprland
-fi
+#if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+#  exec Hyprland
+#fi
+
+
 # =========================================================
 eval "$(zoxide init zsh)"
 #  END OF CONFIG
