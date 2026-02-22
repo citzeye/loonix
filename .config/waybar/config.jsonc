@@ -96,7 +96,7 @@
         
                 "custom/launcher": {
                     "format": "󰍜",
-                    "on-click": "wofi --show drun",
+                    "on-click": "uwsm app -- wofi --show drun",
                     "tooltip": false
                 },
         
@@ -104,7 +104,7 @@
                     "format": "{}",
                     "interval": 2,
                     "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#bb5416\">󰈹</span>'; else echo '󰈹'; fi",
-                    "on-click": "brave --password-store=basic",
+                    "on-click": "uwsm app -- brave --password-store=basic",
                     "tooltip": false
                 },
         
@@ -112,7 +112,7 @@
                     "format": "{}",
                     "interval": 2,
                     "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#0088CC\"></span>'; else echo ''; fi",
-                    "on-click": "hyprctl dispatch exec code",
+                    "on-click": "uwsm app -- code",
                     "tooltip": false
                 },
         
@@ -120,7 +120,7 @@
                     "format": "{}",
                     "interval": 2,
                     "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#4dff71\"></span>'; else echo ''; fi",
-                    "on-click": "hyprctl dispatch exec kitty",
+                    "on-click": "uwsm app -- kitty",
                     "tooltip": false
                 },
                 
@@ -128,7 +128,7 @@
                     "format": "{}",
                     "interval": 2,
                     "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06b\"></span>'; else echo ''; fi",
-                    "on-click": "hyprctl dispatch exec thunar",
+                    "on-click": "uwsm app -- thunar",
                     "tooltip": false
                 },
         
@@ -140,13 +140,13 @@
             
         "custom/audio": {
             "format": "󰕾",
-            "on-click": "hyprctl dispatch exec pavucontrol",
+            "on-click": "uwsm app -- pavucontrol",
             "tooltip": false
         },
 
         "custom/network": {
             "format": "",
-            "on-click": "hyprctl dispatch exec pavucontrol",
+            "on-click": "uwsm app -- nm-connection-editor",
             "tooltip": false
         },
 
@@ -154,7 +154,7 @@
 
         "custom/powermenu": {
             "format": "󰤆",
-            "on-click": "hyprctl dispatch exec wlogout",
+            "on-click": "uwsm app -- wlogout",
             "tooltip": false
         }
     }

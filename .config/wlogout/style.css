@@ -1,0 +1,28 @@
+window {
+    background-color: rgba(0, 0, 0, 0); /* Hilangin background item fullscreen */
+}
+
+/* Kotak utama menu */
+grid {
+    margin: 400px 1100px 50px 50px; /* Atur margin: Top Right Bottom Left */
+    /* Margin di atas gede banget biar kepush ke bawah */
+    /* Margin di kanan gede banget biar kepush ke kiri */
+    background-color: #1e1e2e; /* Warna background box (catppuccin) */
+    border-radius: 15px;
+    padding: 10px;
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 25%;
+    border: none;
+    background-color: rgba(30, 30, 46, 0);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+button:focus, button:active, button:hover {
+    background-color: #313244;
+    outline-style: none;
+}

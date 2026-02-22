@@ -2,24 +2,24 @@
 #  ZSH CONFIGURATION (LOONIX MASTER)
 # =========================================================
 
-# --- 0.loonix boot Sequence ---
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  # 1. Jalankan Loonix-Login di dalam Cage (Wayland Kiosk)
-  # Ganti path-nya ke binary/script loonix-login lo
-  cage ~/loonix/tools/loonix-login/bin/loonix-login
-
-  # 2. Begitu Cage/Loonix-Login ditutup, baru tembak Hyprland
-  exec Hyprland
+# Force Zsh if we are in VS Code and not already in Zsh
+if [[ "$TERM_PROGRAM" == "vscode" ]] && [[ "$SHELL" != "/usr/bin/zsh" ]]; then
+    export SHELL=/usr/bin/zsh
+    exec /usr/bin/zsh -l
 fi
 
 # --- Loonix Boot Sequence ---
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  # 1. Jalankan Loonix-Login di dalam Cage (Wayland Kiosk)
-  # Ganti path-nya ke binary/script loonix-login lo
+  # 1. Jalankan Loonix-Login di dalam Cage
   cage ~/loonix/tools/loonix-login/bin/loonix-login
 
-  # 2. Begitu Cage/Loonix-Login ditutup, baru tembak Hyprland
-  exec Hyprland
+  # 2. Begitu Cage ditutup (User sukses login), tembak pake UWSM
+  if uwsm check may-start; then
+      exec uwsm start hyprland.desktop
+  else
+      # Fallback kalau uwsm bermasalah, biar gak nyangkut di TTY
+      exec Hyprland
+  fi
 fi
 
 # --- 1. Environment Variables ---
@@ -100,6 +100,8 @@ alias cwaycss='micro ~/loonix/.config/waybar/style.css'
 alias czsh='micro ~/loonix/.config/zshs/.zshrc'
 alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
 alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
+# Super alias fushion refresh total
+alias nz="nuke && rzsh"
 
 alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
 
