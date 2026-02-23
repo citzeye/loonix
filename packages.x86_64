@@ -1,15 +1,12 @@
 accountsservice
-ags-hyprpanel-git
 alsa-firmware
 alsa-plugins
 alsa-utils
 archiso
-aylurs-gtk-shell-git
 b43-fwcutter
 base
 base-devel
 bash-completion
-bibata-cursor-theme-bin
 bind
 bluez
 bluez-utils
@@ -17,7 +14,6 @@ brightnessctl
 btop
 btrfs-progs
 cage
-cantarell-fonts
 cliphist
 cryptsetup
 device-mapper
@@ -92,10 +88,6 @@ networkmanager-openconnect
 networkmanager-openvpn
 nfs-utils
 nilfs-utils
-noto-fonts
-noto-fonts-cjk
-noto-fonts-emoji
-noto-fonts-extra
 nss-mdns
 ntfs-3g
 ntp
@@ -127,8 +119,6 @@ reflector
 rsync
 rtkit
 s-nail
-sddm
-sddm-sugar-dark
 sg3_utils
 slurp
 smartmontools
@@ -139,12 +129,8 @@ sysfsutils
 systemd-sysvcompat
 texinfo
 timeshift
-ttf-bitstream-vera
-ttf-cascadia-code-nerd
 ttf-dejavu
 ttf-liberation
-ttf-nerd-fonts-symbols
-ttf-opensans
 typescript
 udevil-git
 upower
@@ -152,7 +138,6 @@ usb_modeswitch
 usbutils
 uwsm
 vulkan-intel
-waypaper
 webkit2gtk
 wget
 which
