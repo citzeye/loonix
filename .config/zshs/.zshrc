@@ -82,6 +82,8 @@
       alias spr='sudo pacman -Rs'
       alias yi='yay -S'
       alias yr='yay -Rs'
+      alias edit-pacman='SUDO_EDITOR="code-oss --wait" sudoedit /etc/pacman.conf'
+      alias edit-iso-pacman='code-oss ~/loonix-iso-build/pacman.conf'
       alias ls='ls -la --color=auto'
 
 # --- Plugins & Extra ---
