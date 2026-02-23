@@ -1,9 +1,0 @@
-ags-hyprpanel-git
-aylurs-gtk-shell-git
-bibata-cursor-theme-bin
-brave-bin
-libastal-tray-git
-sddm-sugar-dark
-udevil-git
-waypaper
-wlogout
