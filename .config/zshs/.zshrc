@@ -3,94 +3,98 @@
 #  ZSH CONFIGURATION (LOONIX MASTER)
 # =========================================================
 
-# --- 1. Environment Variables (WAJIB PALING ATAS) ---
-export EDITOR='micro'
-export VISUAL='micro'
-export QT_QPA_PLATFORMTHEME=qt5ct 
-export XDG_RUNTIME_DIR=/run/user/$UID
-export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$(go env GOPATH)/bin:$PATH"
+# --- Environment Variables (WAJIB PALING ATAS) ---
+      export EDITOR='micro'
+      export VISUAL='micro'
+      export QT_QPA_PLATFORMTHEME=qt5ct 
+      export XDG_RUNTIME_DIR=/run/user/$UID
+      export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$(go env GOPATH)/bin:$PATH"
 
-# Fix Driver buat Wails & Cage for some hardware
-export WEBKIT_DISABLE_GPU_LEVEL=1
-export WLR_NO_HARDWARE_CURSORS=1
+      # Fix Driver buat Wails & Cage for some hardware
+      export WEBKIT_DISABLE_GPU_LEVEL=1
+      export WLR_NO_HARDWARE_CURSORS=1
 
-# --- 2. Loonix Boot Sequence ---
-if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-  # Paksa pake pixman renderer biar gak EGL_BAD_ALLOC
-  # Pake exec supaya hemat RAM, zsh diganti total sama cage
-  WLR_RENDERER=pixman exec cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login
-fi
+# --- Prompt Setup (The Creator Aesthetic) ---
+      get_breadcrumb() {
+        local path_str="${PWD/#$HOME/%n% }"
+        local formatted="${path_str//\// }"
+        echo "${formatted}"
+      }
 
-# Force Zsh if we are in VS Code
-if [[ "$TERM_PROGRAM" == "vscode" ]] && [[ "$SHELL" != "/usr/bin/zsh" ]]; then
-    export SHELL=/usr/bin/zsh
-    exec /usr/bin/zsh -l
-fi
-
-# --- 3. Prompt Setup (The Creator Aesthetic) ---
-get_breadcrumb() {
-  local path_str="${PWD/#$HOME/%n% }"
-  local formatted="${path_str//\// }"
-  echo "${formatted}"
-}
-
-setopt prompt_subst
-set_prompt() {
-    PROMPT="%F{#4dff71} %m %f%F{#D1DAE3}$(get_breadcrumb)%f %F{#7D63C4} %f
+      setopt prompt_subst
+      set_prompt() {
+          PROMPT="%F{#4dff71} %m %f%F{#D1DAE3}$(get_breadcrumb)%f %F{#7D63C4} %f
 "
-}
-precmd_functions+=(set_prompt)
+      }
+      precmd_functions+=(set_prompt)
 
-# Cursor Setup (Underline)
-_set_cursor() { echo -ne "\e[4 q"; }
-precmd_functions+=(_set_cursor)
-_set_cursor
+      # Cursor Setup (Underline)
+      _set_cursor() { echo -ne "\e[4 q"; }
+      precmd_functions+=(_set_cursor)
+      _set_cursor
 
-# --- 4. History & Behavior ---
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
-setopt appendhistory share_history autocd
-autoload -Uz compinit && compinit -i
+# --- History & Behavior ---
+      HISTFILE=~/.zsh_history
+      HISTSIZE=1000
+      SAVEHIST=1000
+      setopt appendhistory share_history autocd
+      autoload -Uz compinit && compinit -i
 
-# --- 5. Aliases: Navigation & Loonix Tools ---
-alias b='clear'
-alias bb='cd .. && ls'
-alias c='cd ~/loonix/.config && ls'
-alias l='cd ~/loonix && ls'
-alias lt='cd ~/loonix/tools && ls'
-alias ltlm='cd ~/loonix/tools/login-menu && ls'
-alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
-alias ltll='cd ~/loonix/tools/loonix-login && ls'
-alias s='cd ~/loonix/.config/scripts && ls'
+# --- Aliases: Navigation & Loonix Tools ---
+      alias b='clear'
+      alias bb='cd .. && ls'
+      alias bbb='cd .. && ls'
+      alias bbbb='cd .. && ls'
+      alias bbbbb='cd .. && ls'
+      alias c='cd ~/loonix/.config && ls'
+      alias s='cd ~/loonix/.config/scripts && ls'
+      alias chypr='micro ~/loonix/.config/hypr/hyprland.conf'
+      alias ccolors='micro ~/loonix/.config/hypr/colors.conf'
+      alias cidle='micro ~/loonix/.config/hypr/hypridle.conf'
+      alias clock='micro ~/loonix/.config/hypr/hyprlock.conf'
+      alias cpaper='micro ~/loonix/.config/hypr/hyprpaper.conf'
+      alias cenv='micro ~/loonix/.config/hypr/configs/env.conf'
+      alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
+      alias ckeybinds='micro ~/loonix/.config/hypr/configs/keybinds.conf'
+      alias crules='micro ~/loonix/.config/hypr/configs/rules.conf'
+      alias ckit='micro ~/loonix/.config/kitty/kitty.conf'
+      alias cway='micro ~/loonix/.config/waybar/config.jsonc'
+      alias cwaycss='micro ~/loonix/.config/waybar/style.css'
 
-# Dev Aliases
-alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
-alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
-alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
+# --- Dev Aliases ---
+      alias l='cd ~/loonix && ls'
+      alias lt='cd ~/loonix/tools && ls'
+      alias ltlm='cd ~/loonix/tools/login-menu && ls'
+      alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
+      alias ltll='cd ~/loonix/tools/loonix-login && ls'
+      alias czsh='micro ~/loonix/.config/zshs/.zshrc'
+      alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
+      alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
+      alias nr="nuke && rzsh"
+      alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
+      alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
+      alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
+      alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
 
-# --- 6. Aliases: Configs ---
-alias chypr='micro ~/loonix/.config/hypr/hyprland.conf'
-alias cenv='micro ~/loonix/.config/hypr/configs/env.conf'
-alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
-alias czsh='micro ~/loonix/.config/zshs/.zshrc'
-alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
-alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
-alias nr="nuke && rzsh"
-alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
+# --- Aliases: Package Manager ---
+      alias update='sudo pacman -Syu'
+      alias spi='sudo pacman -S'
+      alias spr='sudo pacman -Rs'
+      alias yi='yay -S'
+      alias yr='yay -Rs'
+      alias ls='ls -la --color=auto'
 
-# --- 7. Aliases: Package Manager ---
-alias spi='sudo pacman -S'
-alias spr='sudo pacman -Rs'
-alias yi='yay -S'
-alias yr='yay -Rs'
-alias ls='ls -la --color=auto'
+# --- Plugins & Extra ---
+      source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+      source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+      eval "$(zoxide init zsh)"
 
-# --- 8. Plugins & Extra ---
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-eval "$(zoxide init zsh)"
+# --- Custom Functions ---
+      mkd() { mkdir -p "$@" && cd "$_"; }
 
-# --- 9. Pintu Darurat (ByPass) ---
+# --- Pintu Darurat (ByPass) ---
 # Uncomment kalau mau balik ke login TTY biasa
 # alias bypass='exit'
+# =========================================================
+#  END OF CONFIG
+# =========================================================
