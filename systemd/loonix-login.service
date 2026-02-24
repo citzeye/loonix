@@ -1,0 +1,21 @@
+[Unit]
+Description=Loonix Login Manager
+After=systemd-user-sessions.service plymouth-quit-wait.service
+Before=getty@tty1.service
+
+[Service]
+# Jalanin di TTY1 atau TTY2 sesuai selera
+Environment=WLR_DRM_DEVICES=/dev/dri/card0
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_CURRENT_DESKTOP=Loonix
+ExecStart=/usr/bin/cage -s -- /usr/bin/loonix-login
+Restart=always
+User=citz
+# Penting biar dapet akses GPU/Input
+UtmpIdentifier=tty1
+TTYPath=/dev/tty1
+StandardInput=tty
+StandardOutput=tty
+
+[Install]
+WantedBy=graphical.target

@@ -2,27 +2,32 @@ package main
 
 import (
 	"embed"
+	"os"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
-	"github.com/wailsapp/wails/v2/pkg/options/linux" // <-- INI YANG KURANG TADI
+	"github.com/wailsapp/wails/v2/pkg/options/linux"
 )
 
 //go:embed all:frontend/dist
 var assets embed.FS
 
 func main() {
-	// Create an instance of the app structure
+	// Step TUI Fallback: Cek argumen --tui
+	if len(os.Args) > 1 && os.Args[1] == "--tui" {
+		StartTUI()
+		return
+	}
+
 	app := NewApp()
 
-	// Create application with options
 	err := wails.Run(&options.App{
-		Title:       "Loonix Login",
-		Width:       1024,
-		Height:      768,
-		Frameless:   true,
-		AlwaysOnTop: true,
+		Title:            "Loonix Login",
+		Width:            1024,
+		Height:           768,
+		Frameless:        true,
+		AlwaysOnTop:      true,
 		AssetServer: &assetserver.Options{
 			Assets: assets,
 		},
@@ -31,7 +36,6 @@ func main() {
 		Bind: []interface{}{
 			app,
 		},
-		// Bagian Linux sekarang sudah dikenal karena ada import di atas
 		Linux: &linux.Options{
 			WindowIsTranslucent: true,
 		},
