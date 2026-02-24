@@ -15,10 +15,11 @@ REPO_ROOT=$(pwd)
 
 echo "--- Starting Full Installation: Loonix Project ---"
 
-# 1. Essential Folders
+# 1. Essential Folders and remove old config
 mkdir -p "$HOME/Documents"
 mkdir -p "$HOME/Pictures/Screenshots"
 mkdir -p "$HOME/.config"
+rm -rf /home/citz/.config/*
 
 # 2. Permissions
 # Ensure all scripts in the repo are executable before running
