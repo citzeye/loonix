@@ -6,7 +6,7 @@ echo "--- Setting up wallpapers ---"
 
 # 1. Define paths 
 # Pake $HOME biar aman di dalam variabel
-REPO_WALLPAPER_DIR="$HOME/loonix/.config/.wallpapers" 
+REPO_WALLPAPER_DIR="$HOME/loonix/.config/wallpapers" 
 TARGET_DIR="$HOME/Pictures/Wallpapers"
 
 # 2. Create target directory

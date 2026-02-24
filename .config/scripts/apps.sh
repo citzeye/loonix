@@ -8,10 +8,11 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${BLUE}==========================================${NC}"
-echo -e "${BLUE}    LOONIX APPS - Master Installation      ${NC}"
+echo -e "${BLUE}     LOONIX APPS - Master Installation     ${NC}"
 echo -e "${BLUE}==========================================${NC}"
 
 # --- 1. Path Setup ---
+# Fixed to ensure REPO_ROOT is accurate regardless of execution path
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 OFFLINE_BIN_DIR="$REPO_ROOT/.config/apps"
 
@@ -30,8 +31,9 @@ if [[ "$1" == "install" ]]; then
 fi
 
 # --- 4. Online Sync (Master List) ---
-# Ditambahkan: thunar-volman (auto-mount), p7zip, unzip, unrar (extractors)
+# Added: 'go' (for loonix-login), 'webkit2gtk-4.1' (for Wails), 'mpv-mpris' (for notifications)
 PACMAN_APPS=(
+    "go" "webkit2gtk-4.1" "base-devel" "pkgconf" # Development essentials
     "limine" "sddm" "hyprland" "xdg-desktop-portal-hyprland" "uwsm" 
     "kitty" "wofi" "dunst" "libnotify" "micro" "thunar" 
     "thunar-archive-plugin" "thunar-volman" "gvfs" "gvfs-mtp" "file-roller"
@@ -41,19 +43,24 @@ PACMAN_APPS=(
     "nwg-look" "ttf-jetbrains-mono-nerd" "hyprshot" "hyprpaper" 
     "hypridle" "hyprlock" "qt5-wayland" "qt6-wayland" "qt5ct"
     "zsh-autosuggestions" "zsh-syntax-highlighting" "mesa" 
-    "wireplumber" "libgtop" "bluez" "bluez-utils" "networkmanager" 
-    "dart-sass" "upower" "python" "pacman-contrib" 
+    "wireplumber" "libpulse" "libgtop" "bluez" "bluez-utils" "networkmanager" 
+    "dart-sass" "upower" "python" "pacman-contrib" "mpv-mpris"
     "power-profiles-daemon" "brightnessctl" "swww" "gtk3" "gtk4" 
-    "libpulse" "adwaita-icon-theme" "ufw"
+    "adwaita-icon-theme" "ufw" "pavucontrol"
 )
 
 echo -e "\n${GREEN}🌐 Syncing missing dependencies...${NC}"
 sudo pacman -S --needed --noconfirm "${PACMAN_APPS[@]}"
 
 # --- 5. GPU Drivers Injection ---
-# Khusus buat Dell 7559 lo (GTX 960M), ini dapet dkms biar aman pas update kernel
+# Dell 7559 (GTX 960M + HD Graphics 530)
 echo -e "\n${GREEN}🎮 Configuring GPU Drivers...${NC}"
 if echo "$GPU_LIST" | grep -iq "NVIDIA"; then
-    sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils python-gpustat opencl-nvidia
+    echo -e "${YELLOW}Optimizing for NVIDIA (Hybrid/DKMS)...${NC}"
+    sudo pacman -S --needed --noconfirm nvidia-dkms nvidia-utils python-gpustat opencl-nvidia lib32-nvidia-utils
 elif echo "$GPU_LIST" | grep -iq "Intel"; then
-    sudo
+    echo -e "${YELLOW}Optimizing for Intel Graphics...${NC}"
+    sudo pacman -S --needed --noconfirm libva-intel-driver libvdpau-va-gl vulkan-intel
+fi
+
+echo -e "\n${GREEN}✅ Apps and Drivers installation finished.${NC}"

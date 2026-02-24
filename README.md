@@ -23,8 +23,8 @@ If you're feeling brave (use at your own risk!), simply clone and copy the confi
 
     git clone https://github.com/citzeye/loonix.git
     cd loonix
-    chmod +x loonix.sh
-    ./loonix.sh
+    chmod +x install.sh
+    ./install.sh
 
 
 > ## Note :
