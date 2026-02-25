@@ -63,6 +63,8 @@
 
 # --- Dev Aliases ---
       alias l='cd ~/loonix && ls'
+      alias lp='cd ~/loonix-player && ls'
+      alias ll='cd ~/loonix-login && ls'
       alias lt='cd ~/loonix/tools && ls'
       alias ltlm='cd ~/loonix/tools/login-menu && ls'
       alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
@@ -72,6 +74,7 @@
       alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
       alias nr="nuke && rzsh"
       alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
+      alias gogitp='cd ~/loonix-player && git add . && git commit -m "update" && git push && cd -'
       alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
       alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
       alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
