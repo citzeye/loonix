@@ -1,1 +1,4 @@
-{}
+{
+    "Ctrl-c": "command:selection | wl-copy",
+    "Ctrl-v": "command:wl-paste"
+}
