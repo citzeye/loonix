@@ -9,5 +9,5 @@
   <property name="misc-confirm-close-multiple-tabs" type="bool" value="false"/>
   <property name="last-compact-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_25_PERCENT"/>
   <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
-  <property name="last-details-view-column-widths" type="string" value="50,50,131,50,50,50,50,50,1059,50,50,82,50,469"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,131,50,50,50,50,50,1063,50,50,78,50,469"/>
 </channel>

@@ -4,8 +4,8 @@
 # =========================================================
 
 # --- Environment Variables (WAJIB PALING ATAS) ---
-      export EDITOR='micro'
-      export VISUAL='micro'
+      export EDITOR='code --wait'
+      export VISUAL='code --wait'
       export QT_QPA_PLATFORMTHEME=qt5ct 
       export XDG_RUNTIME_DIR=/run/user/$UID
       export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$(go env GOPATH)/bin:$PATH"
@@ -62,6 +62,7 @@
       alias cwaycss='micro ~/loonix/.config/waybar/style.css'
 
 # --- Dev Aliases ---
+      alias tc='code -r'
       alias l='cd ~/loonix && ls'
       alias lp='cd ~/loonix-player && ls'
       alias ll='cd ~/loonix-login && ls'
