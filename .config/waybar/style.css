@@ -36,23 +36,25 @@
 
 #custom-media-icon {
   color:  rgba(0, 255, 162, 0.94);
+  font-size: 20px;
   padding-right: 5px;
 }
 
 #mpris {
   color: rgba(188, 188, 188, 0.8);
-  font-size: 13.5px;
+  font-size: 12px;
 }
 
 #custom-media-play {
   color: rgba(0, 255, 162, 0.94);
+  font-size: 20px;
   padding: 0px 10px 0px 0px;
 }
 
 #custom-media-prev,
 #custom-media-next {
   color: rgba(138, 109, 218, 0.885);
-  font-size: 18px;
+  font-size: 20px;
   padding: 0px 6px 0px 5px;
 }
 

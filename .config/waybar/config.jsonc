@@ -102,7 +102,7 @@
         
                 "custom/browser": {
                     "format": "{}",
-                    "interval": 2,
+                    "interval": 1,
                     "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#d51bb6dd\"></span>'; else echo '󰈹'; fi",
                     "on-click": "uwsm app -- brave --password-store=basic",
                     "tooltip": false
@@ -110,7 +110,7 @@
         
                 "custom/code": {
                     "format": "{}",
-                    "interval": 2,
+                    "interval": 1,
                     "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#1ccfdfe3\"></span>'; else echo ''; fi",
                     "on-click": "uwsm app -- code",
                     "tooltip": false
@@ -118,7 +118,7 @@
         
                 "custom/terminal": {
                     "format": "{}",
-                    "interval": 2,
+                    "interval": 1,
                     "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#21ea6aee\"></span>'; else echo ''; fi",
                     "on-click": "uwsm app -- kitty",
                     "tooltip": false
@@ -126,17 +126,20 @@
                 
                 "custom/files": {
                     "format": "{}",
-                    "interval": 2,
+                    "interval": 1,
                     "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06b\"></span>'; else echo ''; fi",
                     "on-click": "uwsm app -- thunar",
                     "tooltip": false
                 },
         
                 "custom/wp": {
-                    "format": "",
+                    "format": "{}",
+                    "interval": 1,
+                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06b\"></span>'; else echo ''; fi",
                     "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
                     "tooltip": false
                 },
+
             
         "custom/audio": {
             "format": "󰕾",
