@@ -73,7 +73,7 @@
 #media-control,
 #clock {
   border-radius: 5px;
-  background: #1B1B1B;
+  background: #161717;
 }
 
 
@@ -86,7 +86,7 @@ window#waybar.leftbar {
 }
 
 window#waybar.leftbar > box {
-	background-color: #0f0e0e;
+	background-color: #161717;
 	min-width: 26px;
   margin-top: 5px;
   margin-right: 0px;
