@@ -43,23 +43,20 @@
 # --- Aliases: Navigation & Loonix Tools ---
       alias b='clear'
       alias bb='cd .. && ls'
-      alias bbb='cd .. && ls'
-      alias bbbb='cd .. && ls'
-      alias bbbbb='cd .. && ls'
       alias c='cd ~/loonix/.config && ls'
-      alias s='cd ~/loonix/.config/scripts && ls'
-      alias chypr='micro ~/loonix/.config/hypr/hyprland.conf'
-      alias ccolors='micro ~/loonix/.config/hypr/colors.conf'
-      alias cidle='micro ~/loonix/.config/hypr/hypridle.conf'
-      alias clock='micro ~/loonix/.config/hypr/hyprlock.conf'
-      alias cpaper='micro ~/loonix/.config/hypr/hyprpaper.conf'
-      alias cenv='micro ~/loonix/.config/hypr/configs/env.conf'
-      alias cexec='micro ~/loonix/.config/hypr/configs/exec.conf'
-      alias ckeybinds='micro ~/loonix/.config/hypr/configs/keybinds.conf'
-      alias crules='micro ~/loonix/.config/hypr/configs/rules.conf'
-      alias ckit='micro ~/loonix/.config/kitty/kitty.conf'
-      alias cway='micro ~/loonix/.config/waybar/config.jsonc'
-      alias cwaycss='micro ~/loonix/.config/waybar/style.css'
+      alias s='cd ~/loonix/.config/scripts && ls'     
+      alias chypr='code -r ~/loonix/.config/hypr/hyprland.conf'
+      alias ccolors='code -r ~/loonix/.config/hypr/colors.conf'
+      alias cidle='code -r ~/loonix/.config/hypr/hypridle.conf'
+      alias clock='code -r ~/loonix/.config/hypr/hyprlock.conf'
+      alias cpaper='code -r ~/loonix/.config/hypr/hyprpaper.conf'
+      alias cenv='code -r ~/loonix/.config/hypr/configs/env.conf'
+      alias cexec='code -r ~/loonix/.config/hypr/configs/exec.conf'
+      alias ckeybinds='code -r ~/loonix/.config/hypr/configs/keybinds.conf'
+      alias crules='code -r ~/loonix/.config/hypr/configs/rules.conf'
+      alias ckit='code -r ~/loonix/.config/kitty/kitty.conf'
+      alias cway='code -r ~/loonix/.config/waybar/config.jsonc'
+      alias cwaycss='code -r ~/loonix/.config/waybar/style.css'
 
 # --- Dev Aliases ---
       alias tc='code -r'
@@ -70,13 +67,17 @@
       alias ltlm='cd ~/loonix/tools/login-menu && ls'
       alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
       alias ltll='cd ~/loonix/tools/loonix-login && ls'
-      alias czsh='micro ~/loonix/.config/zshs/.zshrc'
+      alias czsh='code -r ~/loonix/.config/zshs/.zshrc' # Ganti ke VS Code
       alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
       alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
       alias nr="nuke && rzsh"
+      
+      # Git & Wails Ops
       alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
       alias gogitp='cd ~/loonix-player && git add . && git commit -m "update" && git push && cd -'
       alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
+      # Wails Dev dengan NVIDIA fix
+      alias wdev='__GLX_VENDOR_LIBRARY_NAME=nvidia GBM_BACKEND=nvidia-drm wails dev'
       alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
       alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
 
