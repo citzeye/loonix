@@ -9,6 +9,7 @@
       export QT_QPA_PLATFORMTHEME=qt5ct 
       export XDG_RUNTIME_DIR=/run/user/$UID
       export PATH="$HOME/.config/scripts:$HOME/.config/locals/bin:$(go env GOPATH)/bin:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
 
       # Fix Driver buat Wails & Cage for some hardware
       export WEBKIT_DISABLE_GPU_LEVEL=1

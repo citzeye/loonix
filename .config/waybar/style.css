@@ -116,6 +116,7 @@ window#waybar.leftbar #custom-browser,
 window#waybar.leftbar #custom-code,
 window#waybar.leftbar #custom-terminal,
 window#waybar.leftbar #custom-files,
+window#waybar.leftbar #custom-lp,
 window#waybar.leftbar #custom-wp {
   font-size: 28px;
 	color: rgba(122, 122, 122, 0.89);
@@ -132,9 +133,10 @@ window#waybar.leftbar #custom-powermenu {
 
 window#waybar.leftbar #custom-launcher:hover,
 window#waybar.leftbar #custom-browser:hover,
-window#waybar.leftbar #custom-files:hover,
 window#waybar.leftbar #custom-code:hover,
 window#waybar.leftbar #custom-terminal:hover,
+window#waybar.leftbar #custom-files:hover,
+window#waybar.leftbar #custom-lp:hover,
 window#waybar.leftbar #custom-wp:hover,
 window#waybar.leftbar #custom-audio:hover,
 window#waybar.leftbar #custom-network:hover,

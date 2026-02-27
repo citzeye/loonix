@@ -95,7 +95,7 @@
         
 
         "modules-left": ["custom/launcher"],  
-        "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/wp"],
+        "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/lp", "custom/wp"],
                 "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
         
                 "custom/launcher": {
@@ -131,15 +131,23 @@
                 "custom/files": {
                     "format": "{}",
                     "interval": 1,
-                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06b\"></span>'; else echo ''; fi",
+                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06bbb\"></span>'; else echo ''; fi",
                     "on-click": "uwsm app -- thunar",
+                    "tooltip": false
+                },
+
+                "custom/lp": {
+                    "format": "{}",
+                    "interval": 1,
+                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f6b451bb\">󰎄</span>'; else echo '󰎄'; fi",
+                    "on-click": "loonix-player",
                     "tooltip": false
                 },
         
                 "custom/wp": {
                     "format": "{}",
                     "interval": 1,
-                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#8533ff\"></span>'; else echo ''; fi",
+                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#8533ffbb\"></span>'; else echo ''; fi",
                     "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
                     "tooltip": false
                 },
