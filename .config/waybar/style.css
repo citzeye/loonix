@@ -92,8 +92,8 @@ window#waybar.leftbar > box {
   margin-right: 0px;
   margin-bottom: 5px;
   margin-left: 0px;
-	padding: 0px 0px 0px 0px;
-  border-radius: 0px 5px 5px 0px;
+	padding: 0px 0px 0px 2px;
+  border-radius: 5px 5px 5px 5px;
 }
 
 window#waybar.leftbar .modules-left,
