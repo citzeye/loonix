@@ -74,13 +74,25 @@
       alias nr="nuke && rzsh"
       
       # Git & Wails Ops
-      alias gogit='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
-      alias gogitp='cd ~/loonix-player && git add . && git commit -m "update" && git push && cd -'
+      alias gogitl='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
+      alias gogitlp='cd ~/loonix-player && git add . && git commit -m "update" && git push && cd -'
+      alias gogitlt='cd ~/loonix-tunes && git add . && git commit -m "update" && git push && cd -'
       alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
-      # Wails Dev dengan NVIDIA fix
-      alias wdev='__GLX_VENDOR_LIBRARY_NAME=nvidia GBM_BACKEND=nvidia-drm wails dev'
-      alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
-      alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
+      # # Wails Dev dengan NVIDIA fix
+      # alias wdev='__GLX_VENDOR_LIBRARY_NAME=nvidia GBM_BACKEND=nvidia-drm wails dev'
+      # alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
+      # alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
+
+      # loonix-tunes dev bind
+      alias ltu='cd /home/citz/loonix-tunes'
+      alias ltv='qml qml/main.qml'
+      alias ltrun='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
+
+
+      # Cargo & Build Ops (Standard Rust)
+      alias lpcr='cargo run'
+      alias lpcb='cargo build --release'
+      alias lpct='cargo test'
 
 # --- Aliases: Package Manager ---
       alias update='sudo pacman -Syu'

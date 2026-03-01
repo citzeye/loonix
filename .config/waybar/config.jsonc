@@ -116,7 +116,7 @@
                     "format": "{}",
                     "interval": 1,
                     "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#1ccfdfe3\"></span>'; else echo ''; fi",
-                    "on-click": "uwsm app -- code",
+                    "on-click": "uwsm app -- code --disable-gpu",
                     "tooltip": false
                 },
         
