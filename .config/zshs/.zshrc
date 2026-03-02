@@ -84,7 +84,7 @@
       # alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
 
       # loonix-tunes dev bind
-      alias ltu='cd /home/citz/loonix-tunes'
+      alias ltunes='cd /home/citz/loonix-rust/loonix-tunes'
       alias ltv='qml qml/main.qml'
       alias ltrun='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
 
@@ -96,7 +96,7 @@
 
 # --- Aliases: Package Manager ---
       alias update='sudo pacman -Syu'
-      alias spi='sudo pacman -S'
+      alias spi='/home/citz/loonix-rust/target/release/loonix-pkg install'
       alias spr='sudo pacman -Rs'
       alias yi='yay -S'
       alias yr='yay -Rs'

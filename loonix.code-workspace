@@ -1,11 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		},
-		{
-			"path": "../loonix-tunes"
-		}
-	],
-	"settings": {}
+  "folders": [
+    {
+      "path": ".",
+    },
+    {
+      "path": "../loonix-rust",
+    },
+    {
+      "path": "../loonix-player",
+    },
+  ],
+  "settings": {},
 }
