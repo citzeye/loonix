@@ -98,6 +98,10 @@
       sudo CUDA_VISIBLE_DEVICES="" OLLAMA_MODELS="$OLLAMA_MODELS" OLLAMA_HOST="127.0.0.1:11434" ollama serve
       }
 
+      # GOOGLE API KEY      
+      export GOOGLE_API_KEY='AIzaSyDgIcADgsdloMWS_t_oeRGvw7T2KOQlfi8'
+
+
       # # --- AGENT TOOLS ---
       # ai-fix() {
       # if [[ -f "$1" ]]; then
