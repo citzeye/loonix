@@ -1,175 +1,187 @@
 [
-    // --- BAR PERTAMA (TOP) ---
-    {
-        "name": "topbar",
-        "layer": "top",
-        "position": "top",
-        "height": 26,
-        "margin-top": 5,
-        "margin-right": 5,
-        "margin-left": 5,
-        "margin-bottom": 0,
-        "exclusive": false,
+  // --- BAR PERTAMA (TOP) ---
+  {
+    "name": "topbar",
+    "layer": "top",
+    "position": "top",
+    "height": 26,
+    "margin-top": 5,
+    "margin-right": 5,
+    "margin-left": 5,
+    "margin-bottom": 0,
+    "exclusive": false,
 
-        "modules-left": ["hyprland/workspaces"],
-        "modules-center": ["group/media-control"],
-        "modules-right": ["clock"],
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["group/media-control"],
+    "modules-right": ["clock"],
 
+    "hyprland/workspaces": {
+      "format": "{icon}",
+      "on-click": "activate",
+      "sort-by-number": true,
+      "persistent-workspaces": {
+        "*": [1, 2, 3, 4, 5],
+      },
+    },
 
-        "hyprland/workspaces": {
-            "format": "{icon}",
-            "on-click": "activate",
-            "sort-by-number": true,
-            "persistent-workspaces": {
-                "*": [1, 2, 3, 4, 5]
-            }
+    "hyprland/window": {
+      "max-length": 50,
+      "separate-outputs": true,
+    },
+
+    // --- CENTER: MEDIA CONTROL (VLC & Music) ---
+    "group/media-control": {
+      "orientation": "horizontal",
+      "modules": [
+        "custom/media-icon",
+        "mpris",
+        "custom/media-prev",
+        "custom/media-play",
+        "custom/media-next",
+      ],
+    },
+
+    "mpris": {
+      "format": "{artist} - {title}",
+      "max-length": 52,
+    },
+    "custom/media-icon": {
+      "format": "",
+      "on-click": "fooyin",
+      "tooltip": false,
+    },
+    "custom/media-prev": {
+      "format": " 󰒮",
+      "on-click": "playerctl previous",
+      "tooltip": false,
+    },
+    "custom/media-play": {
+      "format": " ",
+      "on-click": "playerctl play-pause",
+      "tooltip": false,
+    },
+    "custom/media-next": {
+      "format": "󰼧",
+      "on-click": "playerctl next",
+      "tooltip": false,
+    },
+    "clock": {
+      "format": "{:%H:%M}",
+      "tooltip-format": "<tt>{:%A,%d-%m-%Y}</tt>",
+      "calendar": {
+        "mode": "month",
+        "mode-mon-col": 3,
+        "on-scroll": 1,
+        "format": {
+          "months": "<span color='#00ffff'><b>{}</b></span>",
+          "days": "<span color='#ffffff'>{}</span>",
+          "weekdays": "<span color='#bb9af7'><b>{}</b></span>",
+          "today": "<span color='#f5c2e7'><b><u>{}</u></b></span>",
         },
-   
+      },
+      "actions": {
+        "on-click-right": "mode",
+        "on-scroll-up": "shift_up",
+        "on-scroll-down": "shift_down",
+      },
+    },
+  },
 
+  // --- BAR KEDUA (LEFT) ---
+  {
+    "name": "leftbar",
+    "layer": "top",
+    "position": "left",
+    "width": 26,
+    "height": 1080,
+    "margin-top": 0,
+    "margin-right": 0,
+    "margin-left": 5,
+    "margin-bottom": 0,
+    "exclusive": true,
+    "gtk-layer-shell": true,
 
-        "hyprland/window": {
-            "max-length": 50,
-            "separate-outputs": true
-        },
+    "modules-left": ["custom/launcher"],
+    "modules-center": [
+      "custom/browser",
+      "custom/code",
+      "custom/terminal",
+      "custom/files",
+      "custom/lp",
+      "custom/wp",
+    ],
+    "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
 
-        // --- CENTER: MEDIA CONTROL (VLC & Music) ---
-        "group/media-control": {
-            "orientation": "horizontal",
-            "modules": [
-                "custom/media-icon",
-                "mpris",
-                "custom/media-prev",
-                "custom/media-play",
-                "custom/media-next"
-            ]
-        },
+    "custom/launcher": {
+      "format": "󰍜",
+      "on-click": "uwsm app -- wofi --show drun",
+      "tooltip": false,
+    },
 
-            "mpris": {
-                "format": "{artist} - {title}",
-                "max-length": 52
-            },
-            "custom/media-icon": {
-                "format": "",
-                "on-click": "fooyin",
-                "tooltip": false
-            },
-            "custom/media-prev": { "format": " 󰒮", "on-click": "playerctl previous", "tooltip": false },
-            "custom/media-play": { "format": " ", "on-click": "playerctl play-pause", "tooltip": false },
-            "custom/media-next": { "format": "󰼧", "on-click": "playerctl next", "tooltip": false },
-        "clock": {
-            "format": "{:%H:%M}",
-            "tooltip-format": "<tt>{:%A,%d-%m-%Y}</tt>",
-            "calendar": {
-                "mode": "month",
-                "mode-mon-col": 3,
-                "on-scroll": 1,
-                "format": {
-                    "months": "<span color='#00ffff'><b>{}</b></span>",
-                    "days": "<span color='#ffffff'>{}</span>",
-                    "weekdays": "<span color='#bb9af7'><b>{}</b></span>",
-                    "today": "<span color='#f5c2e7'><b><u>{}</u></b></span>"
-                }
-            },
-            "actions": {
-                "on-click-right": "mode",
-                "on-scroll-up": "shift_up",
-                "on-scroll-down": "shift_down"
-            }
-        }
-    },    
+    "custom/browser": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#FD84C8dd\"></span>'; else echo '󰈹'; fi",
+      "on-click": "uwsm app -- brave --password-store=basic",
+      "tooltip": false,
+    },
 
+    "custom/code": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#1ccfdfe3\"></span>'; else echo ''; fi",
+      "on-click": "uwsm app -- code --disable-gpu",
+      "tooltip": false,
+    },
 
-// --- BAR KEDUA (LEFT) ---
-    {
-        "name": "leftbar",
-        "layer": "top",
-        "position": "left",
-        "width": 26,
-        "height": 1080,
-        "margin-top": 0,
-        "margin-right": 0,
-        "margin-left": 5,
-        "margin-bottom":0,
-        "exclusive": true,
-        "gtk-layer-shell": true,
-        
+    "custom/terminal": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#bbfb28e3);\"></span>'; else echo ''; fi",
+      "on-click": "uwsm app -- kitty",
+      "tooltip": false,
+    },
 
-        "modules-left": ["custom/launcher"],  
-        "modules-center": ["custom/browser", "custom/code", "custom/terminal", "custom/files", "custom/lp", "custom/wp"],
-                "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
-        
-                "custom/launcher": {
-                    "format": "󰍜",
-                    "on-click": "uwsm app -- wofi --show drun",
-                    "tooltip": false
-                },
-        
-                "custom/browser": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -x brave > /dev/null; then echo '<span color=\"#FD84C8dd\"></span>'; else echo '󰈹'; fi",
-                    "on-click": "uwsm app -- brave --password-store=basic",
-                    "tooltip": false
-                },
-        
-                "custom/code": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -f /usr/lib/code/code > /dev/null; then echo '<span color=\"#1ccfdfe3\"></span>'; else echo ''; fi",
-                    "on-click": "uwsm app -- code --disable-gpu",
-                    "tooltip": false
-                },
-        
-                "custom/terminal": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#21ea6aee\"></span>'; else echo ''; fi",
-                    "on-click": "uwsm app -- kitty",
-                    "tooltip": false
-                },
-                
-                "custom/files": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06bbb\"></span>'; else echo ''; fi",
-                    "on-click": "uwsm app -- thunar",
-                    "tooltip": false
-                },
+    "custom/files": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f9f06bbb\"></span>'; else echo ''; fi",
+      "on-click": "uwsm app -- thunar",
+      "tooltip": false,
+    },
 
-                "custom/lp": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f6b451bb\">󰎄</span>'; else echo '󰎄'; fi",
-                    "on-click": "loonix-player",
-                    "tooltip": false
-                },
-        
-                "custom/wp": {
-                    "format": "{}",
-                    "interval": 1,
-                    "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#8533ffbb\"></span>'; else echo ''; fi",
-                    "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
-                    "tooltip": false
-                },
+    "custom/lp": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#f6b451bb\">󰎄</span>'; else echo '󰎄'; fi",
+      "on-click": "loonix-player",
+      "tooltip": false,
+    },
 
-            
-        "custom/audio": {
-            "format": "󰕾",
-            "on-click": "uwsm app -- pavucontrol",
-            "tooltip": false
-        },
+    "custom/wp": {
+      "format": "{}",
+      "interval": 1,
+      "exec": "if pgrep -x thunar > /dev/null; then echo '<span color=\"#8533ffbb\"></span>'; else echo ''; fi",
+      "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
+      "tooltip": false,
+    },
 
-        "custom/network": {
-            "format": "",
-            "on-click": "uwsm app -- nm-connection-editor",
-            "tooltip": false
-        },
-        
+    "custom/audio": {
+      "format": "󰕾",
+      "on-click": "uwsm app -- pavucontrol",
+      "tooltip": false,
+    },
 
-        "custom/powermenu": {
-            "format": "󰤆",
-            "on-click": "uwsm app -- wlogout",
-            "tooltip": false
-        }
-    }
+    "custom/network": {
+      "format": "",
+      "on-click": "uwsm app -- nm-connection-editor",
+      "tooltip": false,
+    },
+
+    "custom/powermenu": {
+      "format": "󰤆",
+      "on-click": "uwsm app -- wlogout",
+      "tooltip": false,
+    },
+  },
 ]

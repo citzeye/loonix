@@ -60,40 +60,27 @@
       alias cwaycss='code -r ~/loonix/.config/waybar/style.css'
 
 # --- Dev Aliases ---
-      alias tc='code -r'
-      alias l='cd ~/loonix && ls'
-      alias lp='cd ~/loonix-player && ls'
-      alias ll='cd ~/loonix-login && ls'
-      alias lt='cd ~/loonix/tools && ls'
-      alias ltlm='cd ~/loonix/tools/login-menu && ls'
-      alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
-      alias ltll='cd ~/loonix/tools/loonix-login && ls'
       alias czsh='code -r ~/loonix/.config/zshs/.zshrc' # Ganti ke VS Code
       alias rzsh='source ~/.zshrc && echo "🚀 Zsh Config Reloaded!"'
       alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
       alias nr="nuke && rzsh"
+      alias tc='code -r'
       
-      # Git & Wails Ops
-      alias gogitl='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
-      alias gogitlp='cd ~/loonix-player && git add . && git commit -m "update" && git push && cd -'
-      alias gogitlt='cd ~/loonix-tunes && git add . && git commit -m "update" && git push && cd -'
-      alias dev-loonix='cd ~/loonix/tools/loonix-gui && wails dev'
-      # # Wails Dev dengan NVIDIA fix
-      # alias wdev='__GLX_VENDOR_LIBRARY_NAME=nvidia GBM_BACKEND=nvidia-drm wails dev'
-      # alias build-loonix='cd ~/loonix/tools/loonix-gui && wails build'
-      # alias login-test='WLR_RENDERER=pixman cage -s -- ~/loonix/tools/loonix-login/bin/loonix-login'
+      # loonix
+      alias l='cd ~/loonix && ls'
+      alias ggl='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
+      alias lp='cd ~/loonix-player && ls'
+      alias ll='cd ~/loonix-login && ls'
+      alias ltlm='cd ~/loonix/tools/login-menu && ls'
+      alias ltlg='cd ~/loonix/tools/loonix-gui && ls'
+      alias ltll='cd ~/loonix/tools/loonix-login && ls'
 
-      # loonix-tunes dev bind
-      alias ltunes='cd /home/citz/loonix-rust/loonix-tunes'
-      alias ltv='qml qml/main.qml'
-      alias ltrun='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
-
-
-      # Cargo & Build Ops (Standard Rust)
-      alias lpcr='cargo run'
-      alias lpcb='cargo build --release'
-      alias lpct='cargo test'
-
+      # loonix-rust & loonix-tunes dev bind
+      alias lr='cd /home/citz/loonix-rust && ls'
+      alias lt='cd /home/citz/loonix-rust/loonix-tunes && ls'
+      alias ltr='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
+      alias gglr='cd ~/loonix-rust && git add . && git commit -m "update" && git push && cd -'
+      
 # --- Aliases: Package Manager ---
       alias update='sudo pacman -Syu'
       alias spi='/home/citz/loonix-rust/target/release/loonix-pkg install'
@@ -111,6 +98,9 @@
 
 # --- Custom Functions ---
       mkd() { mkdir -p "$@" && cd "$_"; }
+
+# ---  opencode  --- 
+export PATH=/home/citz/.opencode/bin:$PATH
 
 # --- Pintu Darurat (ByPass) ---
 # Uncomment kalau mau balik ke login TTY biasa

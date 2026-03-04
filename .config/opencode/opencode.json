@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "options": { "baseURL": "http://127.0.0.1:11435/v1" },
+      "models": {
+        "llama3.2-3b": { "name": "Local Llama3.2-3B" },
+        "llama3.2-7b": { "name": "Local Llama3.2-7B" },
+        "codellama-7b": { "name": "Local CodeLlama-7B" },
+        "mistral-7b": { "name": "Local Mistral-7B" }
+      }
+    }
+  },
+  "model": "ollama/llama3.2-3b"
+}

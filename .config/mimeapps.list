@@ -16,6 +16,7 @@ text/x-scss=micro-editor.desktop
 application/x-shellscript=code-oss.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
+x-scheme-handler/chatbox=xyz.chatboxapp.app.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
