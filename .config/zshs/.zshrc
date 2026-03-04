@@ -80,9 +80,54 @@
       alias lt='cd /home/citz/loonix-rust/loonix-tunes && ls'
       alias ltr='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
       alias gglr='cd ~/loonix-rust && git add . && git commit -m "update" && git push && cd -'
+
+      # ==================================
+      # 🤖 OLLAMA AI & AGENT ALIASES
+      # ==================================
+
+      # Path Configuration
+      export OLLAMA_MODELS="/usr/share/ollama/.ollama/models"
+      export LOONIX_AGENT_PATH="/home/citz/loonix-rust/loonix-agent.py"
+
+      # --- SERVER CORE ---
+      ai-start() {
+      sudo systemctl stop ollama 2>/dev/null
+      sudo pkill -f ollama 2>/dev/null
+      echo "Starting Ollama in CPU Mode..."
+      # Pakai sudo langsung di depan perintah serve
+      sudo CUDA_VISIBLE_DEVICES="" OLLAMA_MODELS="$OLLAMA_MODELS" OLLAMA_HOST="127.0.0.1:11434" ollama serve
+      }
+
+      # # --- AGENT TOOLS ---
+      # ai-fix() {
+      # if [[ -f "$1" ]]; then
+      #       # Jika input file: Alirkan isi file pakai cat
+      #       cat "$1" | CUDA_VISIBLE_DEVICES="" python3 "$LOONIX_AGENT_PATH"
+      # else
+      #       # Jika input teks: Alirkan teksnya pakai echo
+      #       echo "$*" | CUDA_VISIBLE_DEVICES="" python3 "$LOONIX_AGENT_PATH"
+      # fi
+      # }
+
+      # cara pakai
+      # ai-fix src/main.rs
+      # atau
+      # ai-fix "Jelaskan kenapa error ini muncul: [paste error lu di sini]"
+
+      # --- QUICK ALIASES ---
+      alias ai-code="ollama run deepseek-coder:6.7b"
+      alias ai-coder="ollama run codellama:7b"
+      alias ai-chat="ollama run llama3.2:3b"
+      alias ai-smart="ollama run mistral:7b"
+      alias ai-list="ollama list"
+      alias ai-stop="sudo pkill -f ollama && echo 'Ollama stopped.'"
+# ================================== echo 'Ollama stopped.'"
+
+      # ==================================
       
 # --- Aliases: Package Manager ---
       alias update='sudo pacman -Syu'
+      alias si='sudo pacman -S'
       alias spi='/home/citz/loonix-rust/target/release/loonix-pkg install'
       alias spr='sudo pacman -Rs'
       alias yi='yay -S'

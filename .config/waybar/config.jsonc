@@ -137,7 +137,7 @@
     "custom/terminal": {
       "format": "{}",
       "interval": 1,
-      "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#bbfb28e3);\"></span>'; else echo ''; fi",
+      "exec": "if pgrep -x kitty > /dev/null; then echo '<span color=\"#72CF01);\"></span>'; else echo ''; fi",
       "on-click": "uwsm app -- kitty",
       "tooltip": false,
     },

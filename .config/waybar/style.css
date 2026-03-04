@@ -74,7 +74,8 @@ window#waybar {
 #media-control,
 #clock {
   border-radius: 5px;
-  background: #162327;
+  /* background: #162327; */
+  background: #1d1b22;
 }
 
 /* ####################--- LEFT BAR ---################# */
@@ -86,7 +87,8 @@ window#waybar.leftbar {
 }
 
 window#waybar.leftbar > box {
-  background-color: #162327;
+  /* background-color: #162327; */
+  background-color: #1d1b22;
   min-width: 26px;
   margin-top: 5px;
   margin-right: 0px;
@@ -108,7 +110,8 @@ window#waybar.leftbar .modules-right {
 
 window#waybar.leftbar #custom-launcher {
   font-size: 28px;
-  color: rgba(118, 214, 0, 0.961);
+  /* color: rgba(118, 214, 0, 0.961); */
+  color: #8b5cf6;
   padding: 0px 1px 0px 0px;
 }
 
@@ -119,7 +122,8 @@ window#waybar.leftbar #custom-files,
 window#waybar.leftbar #custom-lp,
 window#waybar.leftbar #custom-wp {
   font-size: 28px;
-  color: rgba(122, 122, 122, 0.89);
+  /* color: rgba(122, 122, 122, 0.89); */
+  color: #64748b;
   padding: 0px 0px 0px 0px;
 }
 
@@ -127,7 +131,8 @@ window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-network,
 window#waybar.leftbar #custom-powermenu {
   font-size: 24px;
-  color: rgba(95, 95, 95, 0.905);
+  /* color: rgba(95, 95, 95, 0.905); */
+  color: #64748b;
   padding: 0px 1px 0px 0px;
 }
 
