@@ -56,8 +56,7 @@
       alias ckeybinds='code -r ~/loonix/.config/hypr/configs/keybinds.conf'
       alias crules='code -r ~/loonix/.config/hypr/configs/rules.conf'
       alias ckit='code -r ~/loonix/.config/kitty/kitty.conf'
-      alias cway='code -r ~/loonix/.config/waybar/config.jsonc'
-      alias cwaycss='code -r ~/loonix/.config/waybar/style.css'
+
 
 # --- Dev Aliases ---
       alias czsh='code -r ~/loonix/.config/zshs/.zshrc' # Ganti ke VS Code
@@ -80,6 +79,11 @@
       alias lt='cd /home/citz/loonix-rust/loonix-tunes && ls'
       alias ltr='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
       alias gglr='cd ~/loonix-rust && git add . && git commit -m "update" && git push && cd -'
+
+      # loonix-waybar-dual
+      alias cway='code -r ~/loonix/.config/waybar/config.jsonc'
+      alias cwaycss='code -r ~/loonix/.config/waybar/style.css'
+      alias gglwd='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
 
       # ==================================
       # 🤖 OLLAMA AI & AGENT ALIASES
