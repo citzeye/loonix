@@ -64,8 +64,8 @@
       alias nuke='/home/citz/loonix/.config/scripts/r-all.sh'
       alias nr="nuke && rzsh"
       alias tc='code -r'
-      alias lr-rollback='cd /home/citz/loonix-rust git fetch origin && git reset --hard origin/main'
-      
+      alias lr-rollback='git fetch origin && git reset --hard origin/main'
+
       # loonix
       alias l='cd ~/loonix && ls'
       alias ggl='cd ~/loonix && git add . && git commit -m "update" && git push && cd -'
