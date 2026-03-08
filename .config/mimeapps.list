@@ -17,6 +17,7 @@ application/x-shellscript=code-oss.desktop
 x-scheme-handler/about=brave-browser.desktop
 x-scheme-handler/unknown=brave-browser.desktop
 x-scheme-handler/chatbox=xyz.chatboxapp.app.desktop
+application/octet-stream=code-oss.desktop
 
 [Added Associations]
 x-scheme-handler/http=zen.desktop;
@@ -40,3 +41,4 @@ text/x-scss=micro-editor.desktop;
 image/png=swappy.desktop;
 image/jpeg=swappy.desktop;
 application/x-desktop=code-oss.desktop;
+application/octet-stream=micro-editor.desktop;code-oss.desktop;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Loonix Tunes
+Exec=loonix-tunes
+# Arahkan Path ke folder tempat folder 'qml' berada
+Path=/home/citz/loonix-rust/loonix-tunes/
+Icon=multimedia-audio-player
+Type=Application
+Terminal=false
