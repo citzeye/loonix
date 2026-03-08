@@ -39,3 +39,4 @@ text/markdown=micro-editor.desktop;
 text/x-scss=micro-editor.desktop;
 image/png=swappy.desktop;
 image/jpeg=swappy.desktop;
+application/x-desktop=code-oss.desktop;

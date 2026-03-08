@@ -79,6 +79,8 @@
       alias lr='cd /home/citz/loonix-rust && ls'
       alias lt='cd /home/citz/loonix-rust/loonix-tunes && ls'
       alias ltr='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
+      alias ltb='cd /home/citz/loonix-rust/loonix-tunes && ./build_pkg.sh'
+      alias lti='cd /home/citz/loonix-rust/loonix-tunes && sudo pacman -U --noconfirm loonix-tunes-*.pkg.tar.zst'      
       alias gglr='cd ~/loonix-rust && git add . && git commit -m "update" && git push && cd -'
 
       # loonix-waybar-dual
@@ -104,35 +106,15 @@
       }
 
       # GOOGLE API KEY      
-      export GOOGLE_API_KEY='AIzaSyDgIcADgsdloMWS_t_oeRGvw7T2KOQlfi8'
-
-
-      # # --- AGENT TOOLS ---
-      # ai-fix() {
-      # if [[ -f "$1" ]]; then
-      #       # Jika input file: Alirkan isi file pakai cat
-      #       cat "$1" | CUDA_VISIBLE_DEVICES="" python3 "$LOONIX_AGENT_PATH"
-      # else
-      #       # Jika input teks: Alirkan teksnya pakai echo
-      #       echo "$*" | CUDA_VISIBLE_DEVICES="" python3 "$LOONIX_AGENT_PATH"
-      # fi
-      # }
-
-      # cara pakai
-      # ai-fix src/main.rs
-      # atau
-      # ai-fix "Jelaskan kenapa error ini muncul: [paste error lu di sini]"
-
-      # --- QUICK ALIASES ---
-      alias ai-code="ollama run deepseek-coder:6.7b"
-      alias ai-coder="ollama run codellama:7b"
-      alias ai-chat="ollama run llama3.2:3b"
-      alias ai-smart="ollama run mistral:7b"
+      
+      # --- OLLAMA ALIASES ---
+      alias ai-code='ollama run deepseek-coder:6.7b "/set system Jawablah selalu dalam Bahasa Indonesia."'
+      alias ai-coder='ollama run codellama:7b "/set system Jawablah selalu dalam Bahasa Indonesia."'
+      alias ai-chat='ollama run llama3.2:3b "/set system Jawablah selalu dalam Bahasa Indonesia."'
+      alias ai-smart='ollama run mistral:7b "/set system Jawablah always in Bahasa Indonesia."'
       alias ai-list="ollama list"
       alias ai-stop="sudo pkill -f ollama && echo 'Ollama stopped.'"
-# ================================== echo 'Ollama stopped.'"
 
-      # ==================================
       
 # --- Aliases: Package Manager ---
       alias update='sudo pacman -Syu'

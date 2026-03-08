@@ -107,7 +107,7 @@
       "custom/code",
       "custom/terminal",
       "custom/files",
-      "custom/lp",
+      "custom/lt",
       "custom/wp",
     ],
     "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
@@ -150,7 +150,7 @@
       "tooltip": false,
     },
 
-    "custom/lp": {
+    "custom/lt": {
       "format": "{}",
       "interval": 2,
       "exec": "if pgrep -x loonix-tunes > /dev/null; then echo '<span color=\"#F6B451\">󰎄</span>'; else echo '󰎄'; fi",
