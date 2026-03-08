@@ -154,7 +154,7 @@
       "format": "{}",
       "interval": 2,
       "exec": "if pgrep -x loonix-tunes > /dev/null; then echo '<span color=\"#F6B451\">󰎄</span>'; else echo '󰎄'; fi",
-      "on-click": "loonix-tunes",
+      "on-click": "/usr/bin/loonix-tunes",
       "tooltip": false,
     },
 
