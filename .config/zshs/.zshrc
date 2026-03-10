@@ -78,9 +78,11 @@
       # loonix-rust & loonix-tunes dev bind
       alias lr='cd /home/citz/loonix-rust && ls'
       alias lt='cd /home/citz/loonix-rust/loonix-tunes && ls'
+      
       alias ltr='cargo watch -x run' # Preview UI doang tanpa jalanin logic Rust
       # ltb: Compile kode (Hanya Rust, paling aman)
       alias ltb='cd /home/citz/loonix-rust/loonix-tunes cargo clean && cargo build --release'
+      alias ltc='cargo clean'
       # ltp: Packaging (Bungkus binary jadi paket .zst)
       alias ltp='cd /home/citz/loonix-rust/loonix-tunes && ./create_pkg.sh'
       alias lti='cd /home/citz/loonix-rust/loonix-tunes && sudo pacman -U --noconfirm loonix-tunes-*.pkg.tar.zst'      

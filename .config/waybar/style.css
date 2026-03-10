@@ -73,7 +73,7 @@ window#waybar {
 #workspaces,
 #media-control,
 #clock {
-  border-radius: 5px;
+  border-radius: 3px;
   /* background: #162327; */
   background: #1d1b22;
 }
@@ -95,7 +95,7 @@ window#waybar.leftbar > box {
   margin-bottom: 5px;
   margin-left: 0px;
   padding: 0px 0px 0px 2px;
-  border-radius: 5px 5px 5px 5px;
+  border-radius: 3px;
 }
 
 window#waybar.leftbar .modules-left,
@@ -127,6 +127,23 @@ window#waybar.leftbar #custom-wp {
   padding: 0px 0px 0px 0px;
 }
 
+window#waybar.leftbar #battery.charging,
+#battery.plugged {
+  color: #ffffff;
+  background-color: #26a65b;
+}
+
+window#waybar.leftbar #battery.critical:not(.charging) {
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+window#waybar.leftbar #battery,
 window#waybar.leftbar #custom-audio,
 window#waybar.leftbar #custom-network,
 window#waybar.leftbar #custom-powermenu {

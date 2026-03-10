@@ -110,7 +110,12 @@
       "custom/lt",
       "custom/wp",
     ],
-    "modules-right": ["custom/audio", "custom/network", "custom/powermenu"],
+    "modules-right": [
+      "battery",
+      "custom/audio",
+      "custom/network",
+      "custom/powermenu",
+    ],
 
     "custom/launcher": {
       "format": "󰍜",
@@ -164,6 +169,18 @@
       "exec": "if pgrep -f swww > /dev/null; then echo '<span color=\"#8533FF\"></span>'; else echo ''; fi",
       "on-click": "~/loonix/.config/scripts/wp-toggle.sh",
       "tooltip": false,
+    },
+
+    "battery": {
+      "states": {
+        "warning": 30,
+        "critical": 15,
+      },
+      "format": "{icon}",
+      "format-charging": "{capacity}% ",
+      "format-plugged": "{capacity}% ",
+      "format-alt": "{time} {icon}",
+      "format-icons": ["", "", "", "", ""],
     },
 
     "custom/audio": {

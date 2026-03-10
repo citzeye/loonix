@@ -1,1 +1,8 @@
-{"clipboard": "external"}
+// HEADER: Force External Clipboard
+{
+    "clipboard": "external",
+    "copycommand": "wl-copy",
+    "pastecommand": "wl-paste",
+    "mouse": true
+}
+// END: Force External Clipboard
