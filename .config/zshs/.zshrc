@@ -110,7 +110,8 @@
       sudo CUDA_VISIBLE_DEVICES="" OLLAMA_MODELS="$OLLAMA_MODELS" OLLAMA_HOST="127.0.0.1:11434" ollama serve
       }
 
-      # GOOGLE API KEY      
+      # GOOGLE API KEY
+      export GEMINI_API_KEY="AIzaSyC3XrNL3I34vu1X0Pmegea_FohE5jzMKvA"  
       
       # --- OLLAMA ALIASES ---
       alias ai-code='ollama run deepseek-coder:6.7b "/set system Jawablah selalu dalam Bahasa Indonesia."'

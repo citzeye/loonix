@@ -3,6 +3,7 @@
 # Browser Profiles (Data Pribadi)
 .config/BraveSoftware/
 .config/google-chrome/
+.config/zshs/.zshrc
 
 # Editor Profiles & Junk (Berat)
 .config/Code\ -\ OSS/
